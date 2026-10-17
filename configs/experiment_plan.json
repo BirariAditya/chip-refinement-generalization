@@ -1,0 +1,30 @@
+{
+  "status": "proposal_not_executed",
+  "research_date": "2026-10-17",
+  "core_question": "Frozen refinement under circuit-family and initializer shift",
+  "training_seeds_target": [17, 29, 43],
+  "seeds_are_proposed_not_measured": true,
+  "variants": [
+    {"id": "native_single", "reference_scaling": "native_train_extrema", "starts": "single"},
+    {"id": "reference_single", "reference_scaling": "proposed_transfer_reference", "starts": "single"},
+    {"id": "native_mixed", "reference_scaling": "native_train_extrema", "starts": "mixed"},
+    {"id": "reference_mixed", "reference_scaling": "proposed_transfer_reference", "starts": "mixed"}
+  ],
+  "freeze_across_main_variants": ["architecture", "native_passwise_masks", "macro_order", "object_selection", "geometry", "objective_terms", "training_step_budget"],
+  "checkpoint_selection": "validation_families_only",
+  "test_weight_updates": false,
+  "budget_views": ["equal_total_online_wall_time", "equal_candidate_objective_evaluations"],
+  "provisional_seconds_per_case": [30, 120, 600],
+  "budget_freeze": "after_development_pilot_before_test",
+  "interruption": "return_last_independently_checked_feasible_complete_pass_or_common_feasible_start",
+  "mandatory_controls": ["identity", "random_shared_mask", "greedy_shared_mask", "simulated_annealing", "analytical_backbone_continuation", "native_frozen_rl"],
+  "strictly_legal_control_semantics": "label_separately_when_not_native_passwise_transitions",
+  "primary_metrics": ["feasible_completion_rate", "declared_pin_hpwl_change", "quality_vs_time", "harmful_proposal_fraction"],
+  "secondary_metrics": ["declared_congestion_proxy", "displacement", "complete_pass_count", "objective_call_count"],
+  "conditional_metrics": ["routed_wirelength", "overflow", "WNS", "TNS", "power_with_activity_model"],
+  "missing_metrics": null,
+  "optional_extensions": ["pretrained_diffusion_initializer", "budgeted_stopping_gate"],
+  "gpu_access": true,
+  "gpu_model": null,
+  "measured_throughput": null
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "status": "synthetic_example_not_a_real_benchmark_split",
+  "designs": [
+    {"design_id": "toy_train_a", "family_id": "example_family_a", "parent_design": "example_parent_a", "split": "train", "source_url": "toy://example/a", "sha256": null, "status": "example"},
+    {"design_id": "toy_train_a_variant", "family_id": "example_family_a", "parent_design": "example_parent_a", "split": "train", "source_url": "toy://example/a_variant", "sha256": null, "status": "example"},
+    {"design_id": "toy_validation_b", "family_id": "example_family_b", "parent_design": "example_parent_b", "split": "validation", "source_url": "toy://example/b", "sha256": null, "status": "example"},
+    {"design_id": "toy_test_c", "family_id": "example_family_c", "parent_design": "example_parent_c", "split": "test", "source_url": "toy://example/c", "sha256": null, "status": "example"}
+  ]
+}
