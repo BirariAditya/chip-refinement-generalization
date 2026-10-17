@@ -61,7 +61,7 @@ H(P)=\sum_{e\in E}\omega_e\left[
 \max_{p\in e}p_x-\min_{p\in e}p_x+
 \max_{p\in e}p_y-\min_{p\in e}p_y\right].
 \end{equation}
-For pins $(1,1),(4,2),(3,5)$, an unweighted net contributes $3+4=7$. HPWL measures bounding-box extent, not an actual routed path. With affine pin translations it is convex but nonsmooth in unrestricted coordinates; non-overlap and other placement constraints make the overall problem nonconvex.
+Here $P$ denotes a placement, $\omega_e\geq0$ is the weight of net $e$, and $(p_x,p_y)$ are pin coordinates. For pins $(1,1),(4,2),(3,5)$, an unweighted net contributes $3+4=7$. HPWL measures bounding-box extent, not an actual routed path. With affine pin translations it is convex but nonsmooth in unrestricted coordinates; non-overlap and other placement constraints make the overall problem nonconvex.
 
 \emph{Congestion} arises when local routing demand competes for limited resources. A fast demand estimate, global-route overflow, and detailed-routing violations are different measurements. \emph{Regularity} is the reference method's preference for organized peripheral macro geometry; it is useful guidance rather than proof of low congestion. \emph{PPA} means power, performance, and area. Lower HPWL or a demand proxy alone does not demonstrate improved timing, power, or area. Those claims require a suitable physical evaluation flow \citep{openroad}.
 
@@ -75,7 +75,7 @@ Refinement remains challenging: a useful move may worsen one objective while imp
 \subsection{From constructing placements to refining them}
 \citet{lai2022maskplace} use visual masks, action constraints, and dense wirelength feedback for constructive macro placement. Thus, masks and frequent rewards are established ideas. \citet{lai2023chipformer} study transferable placement through offline decision transformers; this motivates separating frozen-policy transfer from target-circuit adaptation. Non-RL refinement is also relevant: IncreMacro demonstrates that incremental adjustment and peripheral guidance can improve a layout without an RL policy \citep{pu2024incremacro}.
 
-\citet{xue2024maskregulate} change RL's role from macro placer to macro regulator. MaskRegulate refines an existing placement using PPO, wirelength information, and regularity feedback. Its original study already includes unseen-circuit evaluation, training on \texttt{superblue1/3/4/5} and testing on \texttt{superblue7/10/16/18}. Therefore, testing on an unseen circuit alone would not be a sufficient new contribution.
+\citet{xue2024maskregulate} change RL's role from macro placer to macro regulator. MaskRegulate refines an existing placement using Proximal Policy Optimization (PPO), an RL training algorithm, together with wirelength information and regularity feedback. Its original study already includes unseen-circuit evaluation, training on \texttt{superblue1/3/4/5} and testing on \texttt{superblue7/10/16/18}. Therefore, testing on an unseen circuit alone would not be a sufficient new contribution.
 
 The released implementation also has important details for reproduction. OLD/NEW occupancy maps allow moves into locations of macros that have not yet been adjusted; intermediate overlap can occur, so complete-pass outputs need independent checks. Quantities are already normalized. Our extension must preserve and document these conventions rather than compare against an invented unnormalized or always-legal baseline \citep{maskregulatecode}.
 
@@ -83,9 +83,9 @@ The released implementation also has important details for reproduction. OLD/NEW
 \citet{lee2025diffusion} train a graph-conditioned diffusion model on synthetic circuit--layout pairs and generate placements through coordinate denoising. Guidance and legalization contribute to inference-time quality. This provides a different route to transferable placement, but it is a generator rather than an existing-layout refiner. Its published results and MaskRegulate's results use different settings and cannot be treated as a controlled direct comparison. Diffusion is useful context for the project; integrating another full framework is outside the present mid-semester scope.
 
 \subsection{Congestion and multi-objective prior art}
-RUDY is an established fast routing-demand estimator \citep{spindler2007rudy}. It distributes estimated net demand across pin bounding rectangles. A lightweight implementation without routing layers, capacities, and obstruction handling is a RUDY-style \emph{demand proxy}, not a routed-congestion measurement.
+Rectangular Uniform wire DensitY (RUDY) is an established fast routing-demand estimator \citep{spindler2007rudy}. It distributes estimated net demand across pin bounding rectangles. Dividing the canvas into grid cells, called bins, produces a spatial map of estimated demand. A lightweight implementation without routing layers, capacities, and obstruction handling is a RUDY-style \emph{demand proxy}, not a routed-congestion measurement.
 
-\citet{chang2022moppo} already propose preference-conditioned multi-objective RL chip placement. Consequently, training one model with inference-time weights is not new by itself. Newer placement studies also incorporate expert guidance or alternative generative formulations \citep{gao2026expertise,xie2026flowplace}. Our contribution must be a well-motivated refinement extension with appropriate evaluation, rather than a first-ever claim about multi-objective placement.
+\citet{chang2022moppo} already propose preference-conditioned multi-objective RL chip placement using a multi-objective PPO method (MOPPO). Consequently, training one model with inference-time weights is not new by itself. Newer placement studies also incorporate expert guidance or alternative generative formulations \citep{gao2026expertise,xie2026flowplace}. Our contribution must be a well-motivated refinement extension with appropriate evaluation, rather than a first-ever claim about multi-objective placement.
 
 \begin{table}[h]
 \caption{Main literature lessons informing the proposed project.}
@@ -104,8 +104,16 @@ IncreMacro & Classical refinement & Strong non-learning controls are necessary.\
 \end{tabularx}
 \end{table}
 
-\subsection{Research gap selected for this project}
-We select the supplied approach's points 4 and 5: \textbf{congestion-aware reward} and \textbf{multi-objective/preference-conditioned regulation}. The question is whether adapting these ideas to an existing-layout regulator gives useful wirelength--regularity--congestion alternatives on unseen circuits. A second question is whether gains in a cheap congestion proxy agree with routing-based measurements. These are proposed questions; the preliminary work below does not answer them yet.
+\subsection{Research gap and the two proposed extensions}
+This project proposes to extend MaskRegulate in two connected ways.
+
+\paragraph{Congestion-aware reward.}
+Add a fast estimate of routing-demand hotspots to the regulator's existing wirelength and regularity objectives. The policy would receive positive feedback when a refinement reduces the combined cost, so training considers estimated congestion explicitly. Timing-aware feedback is a possible later extension, contingent on genuine timing data and a working analysis flow.
+
+\paragraph{Preference-conditioned multi-objective refinement.}
+Give the regulator an input vector specifying the desired balance between wirelength, regularity, and congestion. Instead of using only one fixed balance, the same trained policy would be queried with different preferences to generate alternative layouts. Feasible alternatives would then be filtered into an empirical nondominated set: no other sampled feasible layout is no worse on all objectives and better on at least one.
+
+\textbf{Research question.} Can one congestion-aware, preference-conditioned regulator produce useful wirelength--regularity--congestion trade-offs on unseen circuits, and do improvements in its demand proxy agree with routing-based measurements? The proposed contribution is the evaluated combination of these extensions in placement refinement. The preliminary work reported here does not yet answer this question.
 
 \section{Proposed research direction and problem formulation}
 
@@ -115,19 +123,19 @@ The proposed method takes a circuit, geometry/constraints, an initial placement 
 \mathbf f(P)=\big(H(P),R(P),C(P)\big),\qquad
 \boldsymbol\lambda=(\lambda_H,\lambda_R,\lambda_C)\geq0,\quad \sum_j\lambda_j=1.
 \end{equation}
-$H$ is pin HPWL; $R$ retains the native regularity definition; $C$ summarizes high-demand bins of a declared RUDY-style map. We propose the mean of the top ten percent of bins, rather than whole-grid mean demand, because whole-grid demand largely follows total estimated wirelength. Bin resolution, degenerate-net handling, net demand, and normalization will be fixed and verified.
+$H$ is pin HPWL; $R$ retains MaskRegulate's regularity definition; $C$ summarizes high-demand bins of a declared RUDY-style map. We propose the mean of the top ten percent of bins, rather than whole-grid mean demand, because whole-grid demand largely follows total estimated wirelength. Bin resolution, degenerate-net handling, net demand, and normalization will be fixed and verified.
 
 The main implementation will begin with congestion-aware feedback. Timing is an optional later extension: criticality-weighted HPWL or periodic timing analysis requires genuine criticalities, libraries, constraints, and an analysis flow. It will not be presented as measured timing improvement merely because a geometric proxy decreases.
 
 \subsection{Preference-conditioned policy and reward}
-The reference environment supplies placement, wirelength, and regularity masks for macro adjustment. We propose adding congestion information and the preference vector to both actor and critic. Changing only the reward would not let identical observations select different actions for different preferences. PPO is the planned learning algorithm, following the reference method \citep{schulman2017ppo}.
+The reference environment supplies placement, wirelength, and regularity masks for macro adjustment. The actor selects a macro's destination, while the critic estimates the expected future return used during training. We propose adding congestion information and the preference vector to both networks. Changing only the reward would not let identical observations select different actions for different preferences. PPO is the planned learning algorithm, following MaskRegulate \citep{schulman2017ppo}.
 
 For fixed episode scales $s_j=\max(f_j(P_0),\varepsilon_j)>0$, define
 \begin{equation}\label{eq:reward}
 J_{\boldsymbol\lambda}(P)=\sum_j\lambda_j\frac{f_j(P)}{s_j},
 \qquad r_t=J_{\boldsymbol\lambda}(P_t)-J_{\boldsymbol\lambda}(P_{t+1}).
 \end{equation}
-Scale floors will be fixed using training/validation, and all methods will share the same references on a given start. Preferences will be sampled once per episode and kept fixed within it. With undiscounted fixed-horizon return, the reward sum equals initial-minus-final scalar cost. Native discounting or other shaping changes this relationship and will be documented.
+Here $J_{\boldsymbol\lambda}$ is the preference-weighted cost, $r_t$ is the reward for moving from $P_t$ to $P_{t+1}$, and each $\varepsilon_j$ is a positive minimum scale preventing division by zero. These minimum scales will be fixed using training/validation, and all methods will share the same references on a given start. An episode is one finite sequence of refinement moves; its preferences remain fixed. With undiscounted fixed-horizon return, the reward sum equals initial-minus-final scalar cost. MaskRegulate's discounting or other shaping changes this relationship and will be documented.
 
 For example, $(0.7,0.2,0.1)$ emphasizes wirelength, whereas $(0.2,0.1,0.7)$ emphasizes the congestion proxy. The intended benefit is to query the same trained regulator for different trade-offs. Feasibility is a constraint: a preference cannot justify an illegal returned placement. Native passwise masks will be preserved and final endpoints checked independently.
 
@@ -167,7 +175,7 @@ This is preliminary baseline execution. DREAMPlace initialization/evaluation was
 \toprule
 Component & Current status & Next step\\
 \midrule
-Literature/formulation & Reviewed; points 4 and 5 selected & Refine implementation details with feedback.\\
+Literature/formulation & Congestion-aware, preference-conditioned refinement proposed & Refine implementation details with feedback.\\
 Toy objective/environment & Initial code and smoke checks & Connect checked congestion feedback to native RL.\\
 Original policy & Checkpoint and component execution & Establish a full backend-compatible baseline.\\
 Conditional PPO regulator & Proposed & Add preference inputs and train a small pilot.\\
@@ -183,7 +191,7 @@ The next steps are to establish the native baseline, validate the congestion eva
 
 Training, validation, and test designs will be separated by circuit family. Checkpoints and hyperparameters will use validation only. Planned controls include the original regulator, a fixed-weight congestion-aware model, fixed-weight specialists, no refinement, and greedy/simulated-annealing refinement. We will compare candidate sets under the same \emph{total} deployment budget, including proxy and backend costs, rather than giving a preference sweep uncounted extra runs.
 
-Planned measurements include HPWL, regularity, the demand proxy, endpoint feasibility, runtime, and empirical-set quality. Hypervolume will use common scales and a reference fixed without final-test outcomes. Ablations will separate congestion reward, congestion observation, and preference conditioning. Where compatible data/tools permit, a small preselected subset will be checked for global-route congestion and timing at a common stage \citep{openroadgpl,openroadgrt}. Such evaluation is planned, not completed.
+Planned measurements include HPWL, regularity, the demand proxy, endpoint feasibility, runtime, and empirical-set quality. Hypervolume, a measure of the objective-space region dominated by the sampled layouts relative to a reference point, will use common scales and a reference fixed without final-test outcomes. Component-wise comparisons (ablations) will isolate congestion reward, congestion observation, and preference conditioning. Where compatible data/tools permit, a small preselected subset will be checked for global-route congestion and timing at a common stage \citep{openroadgpl,openroadgrt}. Such evaluation is planned, not completed.
 
 \begin{table}[h]
 \caption{Indicative plan for the remaining two months.}
