@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\begin{axis}[width=0.8\linewidth,height=1.8in,xlabel={Training episode},ylabel={Validation HPWL gain (\%)},xmin=0,xmax=600,ymin=0,ymax=65,grid=major,legend style={font=\scriptsize,at={(1.02,1)},anchor=north west},tick label style={font=\scriptsize},label style={font=\small}]
+\addplot[color=blue,mark=*,mark size=1.1pt] coordinates {(0,38.0334) (100,42.9554) (200,43.1427) (300,43.1427) (400,43.1427) (500,43.1427) (600,43.1427)};
+\addlegendentry{Seed 17}
+\addplot[color=red!70!black,mark=*,mark size=1.1pt] coordinates {(0,0.0000) (100,43.1427) (200,43.1427) (300,43.1427) (400,43.1427) (500,43.1427) (600,43.1427)};
+\addlegendentry{Seed 29}
+\addplot[color=green!50!black,mark=*,mark size=1.1pt] coordinates {(0,0.0000) (100,43.1427) (200,43.1427) (300,43.1427) (400,43.1427) (500,43.1427) (600,43.1427)};
+\addlegendentry{Seed 43}
+\end{axis}
+\end{tikzpicture}

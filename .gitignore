@@ -18,6 +18,13 @@ build/
 *.pickle
 *.ckpt
 *.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+report/output/
+report/preview/
+report/report_standalone.tex
 *.log
 *.zip
 *.tar

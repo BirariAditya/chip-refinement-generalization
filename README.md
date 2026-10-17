@@ -8,6 +8,8 @@ This repository contains a researched mid-semester proposal, individual literatu
 
 ## Start here
 
+**Mid-semester report:** [Compiled eight-page PDF](report/output/Midsem_RL_Chip_Placement_Report.pdf) · [LaTeX source and build instructions](report/README.md). The report now includes a [measured synthetic REINFORCE prototype](prototype/README.md) with four held-out toy netlists. This is an initial implementation, not a real-circuit or PPO reproduction; the original research proposal below remains the plan for the full project.
+
 1. [Thorough research analysis and direction comparison](RESEARCH_ANALYSIS.md)
 2. [Project recommendation and research gap](PROJECT_PROPOSAL.md)
 3. [Topic explained from first principles](foundations/TOPIC_EXPLAINED.md)

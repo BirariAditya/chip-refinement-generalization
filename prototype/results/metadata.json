@@ -1,0 +1,90 @@
+{
+  "status": "measured_synthetic_prototype_not_real_circuit_evidence",
+  "splits": {
+    "train": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108
+    ],
+    "validation": [
+      201,
+      202
+    ],
+    "test": [
+      301,
+      302,
+      303,
+      304
+    ]
+  },
+  "train_initializer": "uniform",
+  "test_initializers": [
+    "uniform",
+    "edge_biased"
+  ],
+  "algorithm": "linear masked REINFORCE, gamma=1, lagged per-step EMA baseline",
+  "candidate_features": [
+    "10*normalized_HPWL_gain",
+    "negative_displacement",
+    "negative_boundary_distance",
+    "gain_times_remaining_horizon",
+    "negative_squared_displacement"
+  ],
+  "checkpoint_rule": "highest_uniform_validation_gain; earliest_tie",
+  "passes": 2,
+  "selection_rule": "best_feasible_incumbent_including_initial_for_all_methods",
+  "budget_rule": "12_decisions_not_equal_objective_calls_or_wall_time",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "training": [
+    {
+      "seed": 17,
+      "training_seconds": 6.823184799999581,
+      "selected_episode": 200,
+      "validation_gain": 43.14268330458098,
+      "theta": [
+        0.4624794854969435,
+        0.0361098516465074,
+        -0.08495381275845534,
+        0.12100895294977577,
+        0.008645453799504961
+      ],
+      "episodes": 600
+    },
+    {
+      "seed": 29,
+      "training_seconds": 6.982057100001839,
+      "selected_episode": 100,
+      "validation_gain": 43.14268330458098,
+      "theta": [
+        0.15347825074861832,
+        0.00401869161686302,
+        -0.029627562212413937,
+        0.019803898930420605,
+        0.004245449278040058
+      ],
+      "episodes": 600
+    },
+    {
+      "seed": 43,
+      "training_seconds": 6.864526699995622,
+      "selected_episode": 100,
+      "validation_gain": 43.14268330458098,
+      "theta": [
+        0.23380751328825095,
+        0.011974480043453636,
+        -0.04830359669469078,
+        0.09960100422334905,
+        -0.012268328842010462
+      ],
+      "episodes": 600
+    }
+  ],
+  "environment_checks": "passed"
+}
