@@ -1,0 +1,15 @@
+{
+  "out_of_bounds_count": 0,
+  "overlap_pair_count": 0,
+  "rectangle_area_fraction": 0.5369592942926985,
+  "legal_rectangle_geometry": true,
+  "upstream_macro_hpwl": 65667.40169642854,
+  "independent_macro_hpwl": 100005.49937500003,
+  "hpwl_implementations_agree": false,
+  "upstream_regularity": 1629753.136283652,
+  "steps": 512,
+  "complete_pass": true,
+  "pass_seconds": 30.2458788,
+  "total_raw_proxy_reward": 3053.3587684069603,
+  "illegal_action_penalties": 0
+}

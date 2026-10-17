@@ -1,0 +1,20 @@
+{
+  "operating_system": {
+    "Caption": "Microsoft Windows 11 Home Single Language",
+    "OSArchitecture": "64-bit",
+    "TotalVisibleMemorySize": 32961912,
+    "FreePhysicalMemory": 10521156
+  },
+  "cpu": {
+    "Name": "Intel(R) Core(TM) Ultra 7 155H",
+    "NumberOfCores": 16,
+    "NumberOfLogicalProcessors": 22
+  },
+  "gpu": {
+    "Name": "Intel(R) Arc(TM) Graphics",
+    "AdapterRAM": 2147479552,
+    "DriverVersion": "32.0.101.8132"
+  },
+  "recorded_local_date": "2026-10-17",
+  "user_timezone": "Asia/Calcutta"
+}

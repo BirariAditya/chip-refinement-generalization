@@ -1,6 +1,8 @@
 # Literature review index
 
-Fourteen individual Markdown reviews were prepared from primary papers, official repositories and tool documentation. Paper findings, code observations, original interpretation and unverified details are distinguished inside each file. Research date: 17 October 2026. No review represents a local reproduction.
+Fourteen initial Markdown reviews and one new congestion/multi-objective review were prepared from primary papers, official repositories and tool documentation. Paper findings, code observations, original interpretation and unverified details are distinguished inside each file. Research date: 17 October 2026. Local original-code execution is documented independently under [reproduction](../reproduction/README.md).
+
+For the selected direction, read [congestion, timing and preference-conditioned prior art](congestion_multiobjective_review.md), particularly Chang et al. (2022), before making novelty claims. The report and Approach E now use this revised focus.
 
 ## Required reading order
 
@@ -18,6 +20,7 @@ Fourteen individual Markdown reviews were prepared from primary papers, official
 | [MaskPlace, 2022](rl_maskplace_2022.md) | Dense masks and constructive RL context | Not a refinement method |
 | [ChiPFormer, 2023](rl_chipformer_2023.md) | Offline learning and transfer context | Distinguish transfer from target-task adaptation |
 | [MaskRegulate, 2024](rl_maskregulate_2024.md) | Anchor refiner and pinned source audit | Published flow and current code defaults can differ |
+| [Congestion and multi-objective prior art](congestion_multiobjective_review.md) | MOPPO, RUDY, timing inputs and Pareto limits for selected Approach E | Preference conditioning is established; local demand is a proxy |
 | [IncreMacro, 2024](rl_incremacro_2024.md) | Non-RL refinement precedent | Exact implementation availability not established |
 | [ChipDiffusion, 2025](diffusion_chipdiffusion_icml2025.md) | Generator comparison | Different benchmark/interface; not a controlled refiner head-to-head |
 | [EXPlace, 2026](rl_explace_2026.md) | Expert priors/timing novelty boundary | Accepted-PDF direct access limited; source excerpts/repository separated |

@@ -1,6 +1,8 @@
 # Toolchain feasibility and execution plan
 
-Status: design/research only. No installation, training, reproduction, or PPA result is claimed here. The host workspace is Windows; GPU access is confirmed, but GPU model, VRAM, host memory and throughput are unspecified. The six-hour mid-sem deadline is for understanding and a defensible proposal. The execution plan below spans approximately eight weeks.
+**Selected direction E:** congestion-aware preference-conditioned refinement, following attachment points 4 and 5. The minimum stack now adds a checked RUDY reward, preference inputs to actor and critic, specialist/search candidate-set controls, and frozen-reference Pareto evaluation. The prior mixed-start/normalization factorial belongs to archived alternative A. See the [selected approach](../approaches/E_CONGESTION_PARETO.md) and [current protocol](experimental_protocol.md).
+
+Status: proposed full-project plan with an initial local execution track. The Windows PC has 32 GB RAM and Intel Arc graphics; the user confirmed that GPU access is on another machine, whose model and access details remain unspecified. An isolated Python 3.8.20 / CPU PyTorch 1.7.1 environment now loads and executes the released checkpoint. See [reproduction records](../reproduction/README.md) for actual component tests, original entry-point failures, and backend build diagnostics. These checks do not establish full paper reproduction or routed PPA. The execution plan below spans approximately eight weeks.
 
 ## Recommended minimum stack
 
@@ -8,7 +10,10 @@ Status: design/research only. No installation, training, reproduction, or PPA re
 2. The same initial placements and backend for every controlled refiner; use DREAMPlace if that is the paper-compatible path.
 3. A common interface for native pass-wise move generation, complete-pass legality, saved feasible incumbents, reward evaluation, undo/reset, and cost logging.
 4. Greedy coordinate descent and SA against that interface where faithful; otherwise label strictly legal search as a practical complete-system control, not an isolated policy comparison.
-5. OpenROAD/ChiPBench on a small predetermined compatible subset for downstream evidence, after proxy experiments are stable.
+5. A checked RUDY estimator with full/incremental comparison, explicit bins/weights/degenerate-box handling, and genuine routing capacities only when available.
+6. A minimal actor/critic preference embedding or tiled channels; shared initial-reference scales; fixed-weight specialist bank and SA/greedy preference sweep.
+7. A minimization-oriented nondominance/HV evaluator with frozen scales/reference and a single total online budget for the complete candidate set.
+8. OpenROAD/ChiPBench on a small predetermined compatible circuit/preference subset for downstream congestion evidence, after proxy experiments are stable. Timing-aware rewards require an additional working STA/data interface.
 
 Circuit Training is useful reference material but is not a mandatory second RL stack. Its [documentation](https://github.com/google-research/circuit_training) explicitly requires Linux and recommends Docker. Prefer a Linux lab server, or a WSL2/container environment if available and verified. Do not assume native Windows compilation or GPU passthrough works. No system-level installation has been performed by this review.
 
@@ -28,6 +33,10 @@ Before promising a comparison, verify all of the following with a development ca
 | Budget interruption | timed feasible-incumbent checkpoint and common fallback | reporting an incomplete or post-deadline layout |
 | Legalizer | endpoint violations and deterministic repair log, before/after cost | repair dominates the method |
 | Reward normalization | native train-extrema vs proposed transfer reference documented | claiming normalization itself is new |
+| Congestion estimator | full/incremental agreement; units/capacities/bin/tail rules fixed | calling relative density actual routing overflow |
+| Preference conditioning | actor and critic receive the same episode-fixed simplex vector | ignoring preferences or conditioning only one component |
+| Set evaluator | common minimization axes, frozen HV reference, deduplication tolerance | sign errors or test-driven reference expansion |
+| Candidate budget | total cost for all queries, specialist/search archives matched | 15-weight method receiving 15 times baseline time |
 | Standard cells | same placement/update schedule across methods | backbone causes the gain |
 | RL checkpoint | correct architecture, feature schema, training provenance | unusable or leaked weights |
 | Diffusion checkpoint | input representation and train-family audit | held-out circuit seen during pretraining |
@@ -49,6 +58,8 @@ For an approximate training budget:
 
 Effective throughput must include any repeated backend calls and data collection. A fast neural forward pass does not guarantee fast RL interaction. Profile CPU bottlenecks before buying more GPU time.
 
+Profile chosen-action RUDY updates before attempting all-grid candidate congestion maps. The latter can multiply cost by the action-grid size. Charge congestion maps, preference-query repeats, legality checks, standard-cell refreshes, and nondominated archive work to online runtime. A GPU-compatible operator in current upstream DREAMPlace is not evidence that the regulator's older bundled environment builds it unchanged.
+
 ### Provisional resource tiers
 
 These are scope proposals, not verified hardware requirements:
@@ -57,34 +68,34 @@ These are scope proposals, not verified hardware requirements:
 - **One accessible GPU:** reserve an initial 10-20 GPU-hour pilot ceiling for installation, throughput measurement, and one short training diagnostic. Allocate a larger fixed cap only after extrapolating measured speed. A working GPU does not establish enough VRAM for every circuit.
 - **More compute:** increase independent training seeds and held-out families before expanding architecture complexity. Preserve the same per-test-case budget for all methods.
 
-For illustration only: if four configurations each cost 8 GPU-hours per seed and use three seeds, training alone would cost 96 GPU-hours. This is arithmetic, **not a forecast**; substitute measured hours and include failed/tuning runs. If the total exceeds the available allocation, reduce the number of configurations in the pilot or circuit sizes, then predeclare which final hypotheses remain testable.
+For illustration only: one conditioned policy costing 8 GPU-hours per seed across three seeds costs 24 GPU-hours, whereas 15 specialists receiving that same per-policy allocation cost 360 GPU-hours. These are arithmetic examples, **not forecasts**. Use an equal aggregate allocation as the practical comparison and label equal-per-specialist training as a higher-total-compute ceiling. Measure all actual costs and include failed/tuning runs. Reduce the preference grid, circuit size, or optional variants if the run matrix does not fit.
 
 ## Eight-week plan
 
 | Week | Deliverable | Acceptance gate |
 |---|---|---|
 | 1 | Read native code, pin environment, build provenance manifest, one legal development placement | dimensions, fixed objects, and independent HPWL check agree |
-| 2 | Native refiner smoke run; greedy/SA interface; resource profile | policy and one classical method complete; pass endpoint and interruption checks pass |
-| 3 | Training/validation/test family freeze; two-factor/four-configuration pilot | no test-family checkpoint selection; native train-extrema and proposed transfer-reference normalization distinguished |
-| 4 | Full training starts; initialization-shift pilots on validation | measured budget fits available resources; main hyperparameters frozen |
-| 5 | Complete training seeds and mandatory controls | same start files, evaluator, thread limits, and accounting |
-| 6 | Final held-out proxy evaluation; optional preselected routing subset | all failures retained; final test not used to retune |
-| 7 | Ablations, family-level analysis, failure cases, optional diffusion comparison | optional work does not displace main evidence |
+| 2 | Native refiner, RUDY reward, greedy/SA interface; resource profile | full/incremental estimator agreement; endpoint and interruption checks pass |
+| 3 | Family split freeze; actor/critic preference inputs; fixed-weight congestion-aware pilot | no test checkpoint selection; preference dependence and scales checked |
+| 4 | Conditioned training and validation; specialist/search pilot | freeze queries/HV reference/normalization/budgets; measured matrix fits resources |
+| 5 | Training seeds and specialist/search controls | same initial artifacts, total set budgets, evaluator, and resource limits |
+| 6 | Final held-out empirical-front evaluation | all failures retained; common HV axes/reference; final test not used to retune |
+| 7 | Focused ablations, preference-collapse analysis, preselected routing/timing subset if feasible | optional work does not displace main evidence |
 | 8 | Reproducibility pass, report, final presentation | claims map directly to saved artifacts and source/runtime records |
 
 If the project begins immediately after today's mid-sem, use this as a relative schedule; do not imply the course's actual final date has been confirmed.
 
 ## Scope priorities
 
-**Must have:** clean family split, native reference, mixed-start extension, classical controls, common initial artifacts, two budget views, legality, pin HPWL, runtime, ablations, and limitations.
+**Must have:** clean family split; native reference; fixed-weight congestion-aware and preference-conditioned refiners; specialist/search controls; common starts/objectives; total candidate-set budget accounting; checked feasibility; HPWL/regularity/RUDY metrics; frozen-reference empirical-front evaluation; ablations and limitations.
 
-**Should have if the pilot supports it:** downstream global-route validation, three independent training seeds, and the transfer-referenced normalization ablation against the native train-calibrated extrema reference.
+**Should have if the pilot supports it:** downstream global-route validation, three training seeds, conditioning/reward-only/heatmap ablations, and start-reference versus native train-extrema scaling.
 
-**Optional:** matched diffusion integration, detailed-route PPA, an always-legal RL transition ablation, hard-macro-only task variant, uncertainty gating, a new GNN architecture, or test-time adaptation. Each adds a separate source of development and evaluation cost. Power-aware RL is outside the minimum proposal unless actual physical/activity data are available.
+**Optional:** a timing-surrogate variant with actual STA-derived criticalities; periodic STA; detailed-route PPA; a small initializer-shift test; matched diffusion integration; an always-legal RL ablation; or a hard-macro-only task variant. The earlier mixed-start/four-configuration robustness study remains archived alternative A, not a second main project. Four-objective training, a new GNN, and test-time adaptation are outside the minimum scope. Power-aware RL requires appropriate physical/activity data.
 
 ## Reproducibility record to save for every run
 
-Save source and dataset revisions, source-file hashes, split/family IDs, environment/container digest, hardware and resource limits, full configuration, all seeds, initial/final placements, checkpoint provenance, training and evaluation durations, objective-call count, feasibility diagnostics, failure status, and raw metric logs. Separate `paper_reported`, `illustrative`, `pilot`, `validation`, and `final_test` results in metadata.
+Save source/dataset revisions and hashes, split/family IDs, environment digest, hardware/resources, full configuration, seeds, initial/final placements, checkpoint provenance, durations/call counts, feasibility diagnostics, failures, and raw logs. Also save per-episode preferences, query set, objective denominators/floors, full RUDY configuration, candidate vectors, archive tolerance, HV reference, and total set-generation budgets. Separate `paper_reported`, `illustrative`, `pilot`, `validation`, and `final_test` results in metadata.
 
 Use an explicit `not_measured` value rather than zero for missing PPA. Keep datasets and large checkpoints outside Git unless redistribution and repository size are appropriate. Provide acquisition instructions and hashes instead.
 

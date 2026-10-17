@@ -1,6 +1,41 @@
-# Proposed project: initialization-robust cross-circuit RL refinement
+# Selected project: congestion-aware preference-conditioned RL placement refinement
 
-## Recommendation
+## Current recommendation: attachment points 4 and 5
+
+Train a MaskRegulate-style **refiner** with an explicit congestion reward and an inference-time preference vector. Given a common initial layout and weights `w=(w_HPWL,w_regularity,w_congestion)`, the frozen actor and critic produce a refined feasible layout. Query a fixed weight set to form an empirical nondominated candidate set. Test on unseen circuit families against fixed-weight specialists and strong search using the same **total** candidate-generation budget.
+
+The core three objectives are pin HPWL, the existing regularity measure, and a precisely specified RUDY hotspot statistic. Normalize each objective using the shared initial layout and training-fixed denominator floors. Use capacities only when genuine physical routing capacities exist; otherwise report relative demand density. Timing-aware reward is optional and requires actual initial STA criticalities or a working periodic STA interface. Better RUDY is not proof of better timing or PPA.
+
+**Novelty boundary:** [Chang et al. (2022)](https://arxiv.org/abs/2204.06407) already proposes flexible multiple-objective chip-placement RL. Our contribution is a tested congestion-aware preference-conditioned **refinement** extension, plus comparison against specialist/search controls, family-disjoint transfer, and proxy/routing validation. We do not claim to invent MORL or recover the true complete Pareto front.
+
+## Current formulation and experimental evidence required
+
+Let `f(s)=(L(s),R(s),C(s))` be nonnegative costs, `F_j(s)=f_j(s)/max(f_j(s_0),epsilon_j)`, and `w` lie on the three-objective simplex. A proposed dense scalar reward is `w^T(F(s_t)-F(s_(t+1)))`. It equals final scalarized improvement only under the stated undiscounted fixed-horizon conditions and correct terminal repair/fallback accounting. Keep a faithful native reference with its existing reward normalization and discounting.
+
+Condition both actor and critic on weights sampled once per episode. A small preference embedding or tiled mask channels suffices; a new GNN is unnecessary. Compare native RL, fixed-weight congestion-aware RL, the conditioned policy, an independently trained specialist bank, no refinement, backbone continuation, and tuned greedy/SA sweeps. Show equal aggregate training resources and equal total online set budgets; separately label a higher-compute specialist ceiling.
+
+Preserve the audited native selected-object definition and pass-wise OLD/NEW semantics. Check complete-pass endpoint legality. At a hard budget interruption return the last checked feasible full endpoint or the shared feasible start. Do not silently substitute an always-legal mask or a different hard-macro set and attribute the result to conditioning.
+
+Evaluate feasibility, individual raw costs, preference-request cost, set hypervolume, runtime, and failures. Freeze normalization, preference queries, family splits, checkpoint selection, and hypervolume reference using training/validation only. A candidate set from 15 preferences must share one total budget; it does not receive 15 times a singleton baseline's budget. Route a small prespecified set of circuits/preferences if compatible, and analyze proxy/routed ranking reversals.
+
+## Current eight-week scope and mid-sem claim
+
+Weeks 1–2 establish the native interface, independent objective/legality checks, and a validated RUDY reward. Weeks 3–4 add conditioned actor/critic and freeze validation choices. Weeks 5–6 complete specialist/search controls and held-out equal-budget evaluation. Weeks 7–8 add focused ablations and optional routing/timing evidence, then prepare the report. GPU access is confirmed; hardware details and throughput still need measurement.
+
+The mid-sem deliverable is a source-grounded formulation and plan. Existing synthetic demonstrations are explicitly toy work, not evidence of real-circuit improvement. Meaningful negative findings include preference collapse, no gain over specialists/search, or proxy improvements that fail routing validation.
+
+Full current specification: [Approach E](approaches/E_CONGESTION_PARETO.md), [experimental protocol](methodology/experimental_protocol.md), and [toolchain feasibility](methodology/toolchain_feasibility.md).
+
+## Historical alternative A: initialization robustness
+
+The earlier initialization-robustness proposal below is retained for traceability. It is **not the selected main direction**. Its mixed-start/normalization factorial is archived; initializer shift may remain a small secondary evaluation for E. The earlier title, hypotheses, and schedule below apply only to alternative A.
+
+<details>
+<summary>Archived earlier proposal A — expand for historical reasoning</summary>
+
+## Earlier option: initialization-robust cross-circuit RL refinement
+
+## Archived alternative rationale
 
 Train a single MaskRegulate-style policy to refine existing macro layouts. Evaluate it on circuit families absent from training and validation, and on initial layouts whose generation method was absent from training. Add two small, explainable changes: dimensionless representations/rewards and training with varied legal starting placements. Keep the architecture and action interface close to the baseline so the experiment can identify the cause of any improvement.
 
@@ -109,4 +144,6 @@ GPU access is confirmed by the user; GPU model, memory, team size and throughput
 | Analysis | Per-design gains, shift sensitivity, runtime, failures and downstream proxy mismatch |
 | Limitations | Few independent circuits, upstream environments, provenance, proxy fidelity, PPA access |
 
-The strongest defensible title for the mid-semester is the proposed title above. A broader claim such as “RL beats diffusion for chip design” would exceed both the task definition and available evidence.
+The earlier title describes archived alternative A only. The selected mid-sem project is now congestion-aware preference-conditioned refinement. A broader claim such as “RL beats diffusion for chip design” would exceed both task definition and evidence.
+
+</details>

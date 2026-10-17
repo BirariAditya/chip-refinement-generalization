@@ -24,7 +24,6 @@ build/
 *.synctex.gz
 report/output/
 report/preview/
-report/report_standalone.tex
 *.log
 *.zip
 *.tar

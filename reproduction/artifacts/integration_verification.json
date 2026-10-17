@@ -1,0 +1,12 @@
+{
+  "integration_exit_code": 0,
+  "positions_identical": true,
+  "policy_actions_identical": true,
+  "greedy_actions_identical": true,
+  "metric_audit_identical": true,
+  "primary_policy_seconds": 59.0111249,
+  "integration_policy_seconds": 96.85142540000001,
+  "primary_greedy_seconds": 30.2458788,
+  "integration_greedy_seconds": 31.306385699999993,
+  "timings_are_observational_not_controlled_benchmarks": true
+}

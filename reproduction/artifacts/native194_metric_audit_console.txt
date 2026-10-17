@@ -1,0 +1,61 @@
+read database from benchmark C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\benchmark\superblue18
+node_net_num_max 33
+node_area_max = 820297.1232
+{
+  "scope": "macro-subgraph reporting metric only; not DREAMPlace global HPWL",
+  "max_width": 4613.58,
+  "max_height": 3050.6400000000003,
+  "selected_nets": 322,
+  "cause": "comp_res initializes min_x from max_height and includes a net only if min_x <= max_height",
+  "policy_algorithm_modified": false,
+  "phases": {
+    "raw_reference": {
+      "independent_true_extrema_hpwl": 134554.86964285714,
+      "upstream_comp_res_hpwl": 105058.59223214276,
+      "recomputed_native_formula_hpwl": 105058.59223214278,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 62,
+      "dropped_net_true_hpwl_sum": 29496.27741071429,
+      "nets_with_differing_hpwl": 62,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 29496.277410714363,
+      "difference_explained_by_dropped_nets": true
+    },
+    "legal_start": {
+      "independent_true_extrema_hpwl": 174465.33062500038,
+      "upstream_comp_res_hpwl": 154486.75205357175,
+      "recomputed_native_formula_hpwl": 154486.7520535718,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 42,
+      "dropped_net_true_hpwl_sum": 19978.578571428567,
+      "nets_with_differing_hpwl": 42,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 19978.578571428574,
+      "difference_explained_by_dropped_nets": true
+    },
+    "official_pretrained": {
+      "independent_true_extrema_hpwl": 206362.42133928582,
+      "upstream_comp_res_hpwl": 144183.31714285718,
+      "recomputed_native_formula_hpwl": 144183.31714285715,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 123,
+      "dropped_net_true_hpwl_sum": 62179.1041964286,
+      "nets_with_differing_hpwl": 123,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 62179.10419642867,
+      "difference_explained_by_dropped_nets": true
+    },
+    "matched_mask_greedy": {
+      "independent_true_extrema_hpwl": 100005.49937500003,
+      "upstream_comp_res_hpwl": 65667.40169642854,
+      "recomputed_native_formula_hpwl": 65667.40169642854,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 80,
+      "dropped_net_true_hpwl_sum": 34338.09767857142,
+      "nets_with_differing_hpwl": 80,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 34338.09767857149,
+      "difference_explained_by_dropped_nets": true
+    }
+  }
+}

@@ -1,21 +1,16 @@
-"""Package the compiled report and create a self-contained LaTeX snapshot."""
+"""Package an externally compiled multi-file report; preserve open editor edits.
+
+The current report_standalone.tex is edited directly. This script never replaces it.
+Compile main.tex externally only when explicitly desired before running packaging.
+"""
 from pathlib import Path
-import re
 import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "output"
-source = (ROOT / "main.tex").read_text(encoding="utf-8")
-style = (ROOT / "main.sty").read_text(encoding="utf-8")
-for command in (r"\NeedsTeXFormat{LaTeX2e}", r"\ProcessOptions\relax", r"\endinput"):
-    style = style.replace(command, "")
-source = source.replace(r"\usepackage{main}", "\\makeatletter\n" + style + "\n\\makeatother")
-source = re.sub(r"\\input\{([^}]+)\}", lambda m: (ROOT / (m[1] + ".tex")).read_text(encoding="utf-8"), source)
-source = source.replace(r"\bibliographystyle{apalike}", "")
-source = source.replace(r"\bibliography{references}", (OUT / "main.bbl").read_text(encoding="utf-8"))
 standalone = ROOT / "report_standalone.tex"
-standalone.write_text("% Generated snapshot. Edit main.tex and regenerate after compilation.\n" + source, encoding="utf-8")
+assert standalone.is_file(), "The directly edited standalone report must exist."
 pdf = OUT / "Midsem_RL_Chip_Placement_Report.pdf"
 shutil.copyfile(OUT / "main.pdf", pdf)
 archive = OUT / "Midsem_RL_Chip_Placement_Source.zip"

@@ -1,0 +1,13 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "main.py", line 26, in <module>
+    from place_db import PlaceDB
+  File "C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\src\place_db.py", line 5, in <module>
+    from problem_instance import ProblemInstance
+  File "C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\src\problem_instance.py", line 7, in <module>
+    from place_env.dmp_caller import DMPcaller
+  File "C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\src\place_env\dmp_caller.py", line 3, in <module>
+    import DREAMPlace.dreamplace.Placer as Placer
+ModuleNotFoundError: No module named 'DREAMPlace'

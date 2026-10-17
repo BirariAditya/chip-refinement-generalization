@@ -1,0 +1,73 @@
+{
+  "source_url": "https://github.com/lamda-bbo/macro-regulator",
+  "source_commit": "fe475473c86121bd09e031b6329f18e2d8b9d5ce",
+  "tracked_source_diff": "",
+  "checkpoint_sha256": "417db848622828487d81521bf6ef0b60b096f46511714e6ab0ca069620c9c9cc",
+  "archive_sha256": "295120fa9f4e46013b68f90ed29603827e9768b84844c461c576881baa8e627a",
+  "archive_bytes": 530920224,
+  "external_cache_root": "C:\\Users\\adity\\.cache\\chip-refinement-reproduction",
+  "benchmark_files": [
+    {
+      "name": "rc.spef",
+      "bytes": 354136188,
+      "sha256": "689745c82512e707d2ebeff1a99ca9db43ccb266bfe06f047bf83be24bfe58ab"
+    },
+    {
+      "name": "superblue18_Early.lib",
+      "bytes": 4525819,
+      "sha256": "130f1df81a7e49dc064451f905d0ba8efffbb7ae99c5db7a2e5f0095594aa708"
+    },
+    {
+      "name": "superblue18_Late.lib",
+      "bytes": 4554222,
+      "sha256": "24e58a746deb17cb883b7dd9ded6846e71587f19605770bc2a1f03c2a6386037"
+    },
+    {
+      "name": "superblue18.def",
+      "bytes": 63477105,
+      "sha256": "9053cb12227171645a9575ed21e2f9224812c96a5a29d25891d13663ceba1ff5"
+    },
+    {
+      "name": "superblue18.iccad2015",
+      "bytes": 105,
+      "sha256": "975f058dd8f6a5354f6610632dddf8ede52724460ff60832c58c793ec426560b"
+    },
+    {
+      "name": "superblue18.lef",
+      "bytes": 3148111,
+      "sha256": "b6be6ea8094623b716286cac2fc413d259cad9e6cd419d8c1737456f85d0e770"
+    },
+    {
+      "name": "superblue18.sdc",
+      "bytes": 435349,
+      "sha256": "87bf093c30402a8496e55e8c4745c118cc2f4e7698f1e7a359130323ef2daa10"
+    },
+    {
+      "name": "superblue18.v",
+      "bytes": 85867040,
+      "sha256": "c99ddccf2b86472a2ddeae68c46001aff13df731715bb9fb4b6f61c950bb7b13"
+    }
+  ],
+  "harness_files": [
+    {
+      "name": "audit_macro_hpwl.py",
+      "sha256": "bee325112b9710f1d49dac7abc32e02ce8cc8d33f0d777f7a8ea969d81877a28"
+    },
+    {
+      "name": "checkpoint_smoke.py",
+      "sha256": "5161d3d94e8a53004cc31e7e1351ac572264644d5d7251b2bd996df4b7df0f54"
+    },
+    {
+      "name": "real_circuit_component.py",
+      "sha256": "92a65e6a57ae16239d06ca4dd7f6c61ee03803b48704524af48275606668c02b"
+    },
+    {
+      "name": "run_local.ps1",
+      "sha256": "c41b7688dd78bea382be54df0e39494e8c5f9952b1cf3cf579c52438bc9a8851"
+    },
+    {
+      "name": "verify_cached_run.py",
+      "sha256": "b7e50813256d312b0be3c2972af9f655d32a1051a42ddf094f283cf75723e1e2"
+    }
+  ]
+}

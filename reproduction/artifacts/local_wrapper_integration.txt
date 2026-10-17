@@ -1,0 +1,224 @@
+Constructing original PPOAgent, including its original ImageNet ResNet initializer.
+{
+  "scope": "official_checkpoint_component_smoke_only",
+  "input": "synthetic diagnostic mask; no circuit benchmark",
+  "upstream_url": "https://github.com/lamda-bbo/macro-regulator",
+  "source_commit": "fe475473c86121bd09e031b6329f18e2d8b9d5ce",
+  "source_diff": "",
+  "python": "3.8.20",
+  "torch": "1.7.1+cpu",
+  "torchvision": "0.8.2+cpu",
+  "numpy": "1.21.2",
+  "device": "cpu",
+  "cuda_available": false,
+  "cpu_threads": 4,
+  "seed": 3,
+  "checkpoint_sha256": "417db848622828487d81521bf6ef0b60b096f46511714e6ab0ca069620c9c9cc",
+  "checkpoint_bytes": 49073954,
+  "strict_checkpoint_load": true,
+  "grid": 224,
+  "state_entries": 401411,
+  "action_count": 50176,
+  "probability_sum": 1.0,
+  "probabilities_finite": true,
+  "masked_probability_mass": 0.0,
+  "selected_action": 1125,
+  "selected_grid_xy": [
+    5,
+    5
+  ],
+  "selected_action_is_mask_legal": true,
+  "repeat_action_matches": true,
+  "selected_action_log_probability": -10.494048144320972,
+  "critic_value": 0.05607324093580246,
+  "first_forward_seconds": 0.07518380000000002,
+  "placement_quality_measured": false,
+  "training_performed": false,
+  "global_hpwl": null,
+  "routed_ppa": null
+}
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Parsing authentic benchmark with unmodified ProblemInstance...
+read database from benchmark C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\benchmark\superblue18
+node_net_num_max 33
+node_area_max = 820297.1232
+Parsed 512 selected modules, 322 selected nets; compressed/full grid: 194 224
+official_pretrained step 1 elapsed 0.36
+official_pretrained step 65 elapsed 20.2
+official_pretrained step 129 elapsed 37.59
+official_pretrained step 193 elapsed 52.77
+official_pretrained step 257 elapsed 66.99
+official_pretrained step 321 elapsed 74.85
+official_pretrained step 385 elapsed 82.12
+official_pretrained step 449 elapsed 89.61
+official_pretrained step 512 elapsed 96.85
+matched_mask_greedy step 1 elapsed 0.11
+matched_mask_greedy step 65 elapsed 5.82
+matched_mask_greedy step 129 elapsed 10.44
+matched_mask_greedy step 193 elapsed 13.75
+matched_mask_greedy step 257 elapsed 17.28
+matched_mask_greedy step 321 elapsed 21.01
+matched_mask_greedy step 385 elapsed 24.4
+matched_mask_greedy step 449 elapsed 27.88
+matched_mask_greedy step 512 elapsed 31.31
+{
+  "scope": "real_circuit_original_policy_and_environment_component_experiment",
+  "not_full_paper_reproduction": true,
+  "source_commit": "fe475473c86121bd09e031b6329f18e2d8b9d5ce",
+  "source_tracked_diff": "",
+  "benchmark": "superblue18",
+  "selected_modules": 512,
+  "selected_macro_nets": 322,
+  "full_def_instances": 768068,
+  "selected_module_definition": "upstream largest 512 instances by area",
+  "checkpoint_training_designs": [
+    "superblue1",
+    "superblue3",
+    "superblue4",
+    "superblue5"
+  ],
+  "checkpoint_sha256": "417db848622828487d81521bf6ef0b60b096f46511714e6ab0ca069620c9c9cc",
+  "seed": 3,
+  "pythonhashseed": "3",
+  "device": "cpu",
+  "torch_threads": 4,
+  "python": "3.8.20",
+  "torch": "1.7.1+cpu",
+  "parse_seconds": 18.8111912,
+  "repair_seconds": 0.3253376999999986,
+  "original_compressed_place_grid": 194,
+  "component_place_grid": 194,
+  "canvas_mode": "native",
+  "hpwl_units": "upstream scaled coordinates; macro/port subgraph only, not global HPWL",
+  "deviations": [
+    "DREAMPlace import isolated with a fail-fast shim; backend never called",
+    "PlaceEnv constructor backend work bypassed; original reset/step/masks are unchanged",
+    "Native compressed outline retained",
+    "Nearest-reference grid legalization replaces unavailable DREAMPlace initialization",
+    "Reward scaling disabled; no policy update, action masks retain original normalization",
+    "Environment test_mode=False only to suppress backend evaluation; agent.eval() remains frozen"
+  ],
+  "raw_reference_grid": {
+    "out_of_bounds_count": 55,
+    "overlap_pair_count": 173,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": false,
+    "upstream_macro_hpwl": 105058.59223214276,
+    "independent_macro_hpwl": 134554.86964285714,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 2155118.9187276857
+  },
+  "legal_start": {
+    "out_of_bounds_count": 0,
+    "overlap_pair_count": 0,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": true,
+    "upstream_macro_hpwl": 154486.75205357175,
+    "independent_macro_hpwl": 174465.33062500038,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 2397170.502940126
+  },
+  "official_pretrained": {
+    "out_of_bounds_count": 0,
+    "overlap_pair_count": 0,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": true,
+    "upstream_macro_hpwl": 144183.31714285718,
+    "independent_macro_hpwl": 206362.42133928582,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 1535586.4816298825,
+    "steps": 512,
+    "complete_pass": true,
+    "pass_seconds": 96.85142540000001,
+    "total_raw_proxy_reward": 3013.4077197679558,
+    "illegal_action_penalties": 0,
+    "macro_hpwl_gain_percent_vs_legal_start": -18.282767470200568
+  },
+  "matched_mask_greedy": {
+    "out_of_bounds_count": 0,
+    "overlap_pair_count": 0,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": true,
+    "upstream_macro_hpwl": 65667.40169642854,
+    "independent_macro_hpwl": 100005.49937500003,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 1629753.136283652,
+    "steps": 512,
+    "complete_pass": true,
+    "pass_seconds": 31.306385699999993,
+    "total_raw_proxy_reward": 3053.3587684069603,
+    "illegal_action_penalties": 0,
+    "macro_hpwl_gain_percent_vs_legal_start": 42.67886976928726
+  },
+  "training_performed": false,
+  "global_hpwl": null,
+  "congestion": null,
+  "routed_ppa": null,
+  "rectangle_legality_only": true
+}
+
+read database from benchmark C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\benchmark\superblue18
+node_net_num_max 33
+node_area_max = 820297.1232
+{
+  "scope": "macro-subgraph reporting metric only; not DREAMPlace global HPWL",
+  "max_width": 4613.58,
+  "max_height": 3050.6400000000003,
+  "selected_nets": 322,
+  "cause": "comp_res initializes min_x from max_height and includes a net only if min_x <= max_height",
+  "policy_algorithm_modified": false,
+  "phases": {
+    "raw_reference": {
+      "independent_true_extrema_hpwl": 134554.86964285714,
+      "upstream_comp_res_hpwl": 105058.59223214276,
+      "recomputed_native_formula_hpwl": 105058.59223214278,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 62,
+      "dropped_net_true_hpwl_sum": 29496.27741071429,
+      "nets_with_differing_hpwl": 62,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 29496.277410714363,
+      "difference_explained_by_dropped_nets": true
+    },
+    "legal_start": {
+      "independent_true_extrema_hpwl": 174465.33062500038,
+      "upstream_comp_res_hpwl": 154486.75205357175,
+      "recomputed_native_formula_hpwl": 154486.7520535718,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 42,
+      "dropped_net_true_hpwl_sum": 19978.578571428567,
+      "nets_with_differing_hpwl": 42,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 19978.578571428574,
+      "difference_explained_by_dropped_nets": true
+    },
+    "official_pretrained": {
+      "independent_true_extrema_hpwl": 206362.42133928582,
+      "upstream_comp_res_hpwl": 144183.31714285718,
+      "recomputed_native_formula_hpwl": 144183.31714285715,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 123,
+      "dropped_net_true_hpwl_sum": 62179.1041964286,
+      "nets_with_differing_hpwl": 123,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 62179.10419642867,
+      "difference_explained_by_dropped_nets": true
+    },
+    "matched_mask_greedy": {
+      "independent_true_extrema_hpwl": 100005.49937500003,
+      "upstream_comp_res_hpwl": 65667.40169642854,
+      "recomputed_native_formula_hpwl": 65667.40169642854,
+      "native_formula_reproduction_agrees": true,
+      "nets_dropped_by_x_threshold": 80,
+      "dropped_net_true_hpwl_sum": 34338.09767857142,
+      "nets_with_differing_hpwl": 80,
+      "nets_with_negative_coordinates": 0,
+      "total_difference": 34338.09767857149,
+      "difference_explained_by_dropped_nets": true
+    }
+  }
+}
+Component execution complete: C:\Users\adity\OneDrive\文件\New project\chip-refinement-research\reproduction\artifacts\native194_integration\real_circuit_component.json
+DREAMPlace global HPWL, routing, PPA and training were not executed.

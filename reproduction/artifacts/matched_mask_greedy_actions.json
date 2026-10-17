@@ -1,0 +1,3074 @@
+[
+  {
+    "step": 0,
+    "action": 35883,
+    "reward": -156.76327532351627,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 1,
+    "action": 0,
+    "reward": 1.9864792503346724,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 2,
+    "action": 189,
+    "reward": 11.97349397590361,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 3,
+    "action": 42560,
+    "reward": 0.0,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 4,
+    "action": 44769,
+    "reward": 6.681793842034807,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 5,
+    "action": 45951,
+    "reward": 0.0,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 6,
+    "action": 44744,
+    "reward": 7.855957161981254,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 7,
+    "action": 127,
+    "reward": 15.979518072289121,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 8,
+    "action": 42498,
+    "reward": 8.962382864792499,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 9,
+    "action": 2367,
+    "reward": 11.825970548862086,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 10,
+    "action": 7778,
+    "reward": 5.350602409638556,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 11,
+    "action": 39424,
+    "reward": 8.84886211512716,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 12,
+    "action": 39165,
+    "reward": 2.6381526104417623,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 13,
+    "action": 45618,
+    "reward": 8.446452476572963,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 14,
+    "action": 44159,
+    "reward": 4.764658634538146,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 15,
+    "action": 65,
+    "reward": 2.32998661311914,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 16,
+    "action": 4643,
+    "reward": -7.552342704149934,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 17,
+    "action": 46882,
+    "reward": 13.555957161981247,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 18,
+    "action": 10059,
+    "reward": 10.645247657295847,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 19,
+    "action": 10304,
+    "reward": -0.9935742971887579,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 20,
+    "action": 36288,
+    "reward": 3.3951807228915696,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 21,
+    "action": 37380,
+    "reward": 14.661713520749654,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 22,
+    "action": 1857,
+    "reward": 3.9412315930388324,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 23,
+    "action": 36094,
+    "reward": 14.800401606425687,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 24,
+    "action": 48505,
+    "reward": 2.6535475234270423,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 25,
+    "action": 4097,
+    "reward": 53.152878179384196,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 26,
+    "action": 42815,
+    "reward": -91.77336010709503,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 27,
+    "action": 10324,
+    "reward": -16.483221775992874,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 28,
+    "action": 41483,
+    "reward": 7.085943775100395,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 29,
+    "action": 40139,
+    "reward": 48.52904953145915,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 30,
+    "action": 13664,
+    "reward": -0.15966086568497762,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 31,
+    "action": 10033,
+    "reward": -21.726729138777333,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 32,
+    "action": 36753,
+    "reward": -186.36131191432395,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 33,
+    "action": 46056,
+    "reward": -61.31548415885763,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 34,
+    "action": 34260,
+    "reward": 10.924631860776442,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 35,
+    "action": 11377,
+    "reward": -7.926282909415444,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 36,
+    "action": 12721,
+    "reward": 3.3046854082998607,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 37,
+    "action": 40269,
+    "reward": 1.9076305220883507,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 38,
+    "action": 48024,
+    "reward": 0.5918340026773827,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 39,
+    "action": 1909,
+    "reward": 70.09433288710397,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 40,
+    "action": 4633,
+    "reward": -123.86229361892008,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 41,
+    "action": 13425,
+    "reward": -0.23654618473895828,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 42,
+    "action": 42710,
+    "reward": 4.39531459170014,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 43,
+    "action": 34048,
+    "reward": 13.522891566265043,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 44,
+    "action": 32256,
+    "reward": 64.2294957608211,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 45,
+    "action": 32263,
+    "reward": -17.811512717536818,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 46,
+    "action": 1879,
+    "reward": 9.594779116465853,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 47,
+    "action": 30464,
+    "reward": 8.24689870593484,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 48,
+    "action": 4107,
+    "reward": -15.26889781347611,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 49,
+    "action": 4113,
+    "reward": 113.73360107095048,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 50,
+    "action": 6561,
+    "reward": 29.065238732708586,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 51,
+    "action": 5675,
+    "reward": 28.514234716644367,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 52,
+    "action": 10334,
+    "reward": -0.4670682730923721,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 53,
+    "action": 10340,
+    "reward": 15.89665327978581,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 54,
+    "action": 10346,
+    "reward": 12.211021865238731,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 55,
+    "action": 7239,
+    "reward": 52.02284694332887,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 56,
+    "action": 11902,
+    "reward": 97.30191878625611,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 57,
+    "action": 38349,
+    "reward": -0.5643016510486731,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 58,
+    "action": 5681,
+    "reward": -18.527353859883974,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 59,
+    "action": 38355,
+    "reward": -110.31240517626055,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 60,
+    "action": 46232,
+    "reward": -26.71360999553771,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 61,
+    "action": 38361,
+    "reward": 5.045247657295854,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 62,
+    "action": 11908,
+    "reward": 252.6188308790718,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 63,
+    "action": 36038,
+    "reward": 7.560508701472564,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 64,
+    "action": 35413,
+    "reward": 240.0821062025881,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 65,
+    "action": 46239,
+    "reward": 26.321463632307005,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 66,
+    "action": 34958,
+    "reward": 140.56724676483708,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 67,
+    "action": 30471,
+    "reward": 93.43150379294954,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 68,
+    "action": 44492,
+    "reward": 26.57099509147703,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 69,
+    "action": 4628,
+    "reward": 112.22052655064701,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 70,
+    "action": 570,
+    "reward": 10.663900044622931,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 71,
+    "action": 46721,
+    "reward": 2.391075412762154,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 72,
+    "action": 44486,
+    "reward": 132.89442213297633,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 73,
+    "action": 10352,
+    "reward": -47.70486390004464,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 74,
+    "action": 38570,
+    "reward": 336.9132976349842,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 75,
+    "action": 19782,
+    "reward": 2.347657295850062,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 76,
+    "action": 19334,
+    "reward": -0.48157072735386136,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 77,
+    "action": 18886,
+    "reward": 1.6854975457385042,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 78,
+    "action": 15008,
+    "reward": 14.318206157965164,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 79,
+    "action": 10355,
+    "reward": 180.185854529228,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 80,
+    "action": 21580,
+    "reward": 8.599999999999993,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 81,
+    "action": 46210,
+    "reward": 5.455287817938421,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 82,
+    "action": 24300,
+    "reward": 0.6611780455153932,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 83,
+    "action": 29494,
+    "reward": 0.7825524319500208,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 84,
+    "action": 29261,
+    "reward": 1.5378402498884416,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 85,
+    "action": 29704,
+    "reward": 5.811334225792068,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 86,
+    "action": 29495,
+    "reward": 0.5854975457385053,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 87,
+    "action": 29705,
+    "reward": -0.43784024988844605,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 88,
+    "action": 29262,
+    "reward": -0.43784024988843756,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 89,
+    "action": 19413,
+    "reward": -0.46019634091923356,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 90,
+    "action": 18965,
+    "reward": 1.0378402498884418,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 91,
+    "action": 18512,
+    "reward": 0.3611780455153934,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 92,
+    "action": 18513,
+    "reward": -0.2572512271307451,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 93,
+    "action": 18514,
+    "reward": -0.3184292726461385,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 94,
+    "action": 18515,
+    "reward": 2.524319500223112,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 95,
+    "action": 13424,
+    "reward": -20.85278893351184,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 96,
+    "action": 13423,
+    "reward": 6.8515841142347,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 97,
+    "action": 13648,
+    "reward": 19.223560910307885,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 98,
+    "action": 27681,
+    "reward": 0.6766622043730528,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 99,
+    "action": 27682,
+    "reward": -0.43784024988844605,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 100,
+    "action": 29690,
+    "reward": 0.6766622043730528,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 101,
+    "action": 29691,
+    "reward": -0.43784024988844605,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 102,
+    "action": 29699,
+    "reward": 0.6621597501115538,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 103,
+    "action": 29700,
+    "reward": -0.43784024988843756,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 104,
+    "action": 28160,
+    "reward": 1.7,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 105,
+    "action": 28161,
+    "reward": -0.43784024988844183,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 106,
+    "action": 10032,
+    "reward": -12.914056224899603,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 107,
+    "action": 10256,
+    "reward": 9.38277554663096,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 108,
+    "action": 21803,
+    "reward": -1.3154841588576534,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 109,
+    "action": 22027,
+    "reward": 0.7262829094154362,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 110,
+    "action": 21802,
+    "reward": -1.233913431503792,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 111,
+    "action": 22026,
+    "reward": -0.8756804997768821,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 112,
+    "action": 21801,
+    "reward": -1.2358768406961165,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 113,
+    "action": 22025,
+    "reward": -0.5921463632307009,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 114,
+    "action": 21800,
+    "reward": 2.681570727353854,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 115,
+    "action": 4627,
+    "reward": -34.037260151717966,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 116,
+    "action": 4626,
+    "reward": -20.752431950022306,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 117,
+    "action": 4625,
+    "reward": 8.628781793842041,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 118,
+    "action": 4851,
+    "reward": 21.103792949576082,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 119,
+    "action": 28258,
+    "reward": 3.0700133868808583,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 120,
+    "action": 28257,
+    "reward": -0.43784024988844605,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 121,
+    "action": 126,
+    "reward": -26.218875502008018,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 122,
+    "action": 125,
+    "reward": 40.52008032128515,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 123,
+    "action": 4850,
+    "reward": -37.95983935742971,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 124,
+    "action": 4849,
+    "reward": 24.547746541722454,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 125,
+    "action": 11078,
+    "reward": 1.324319500223116,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 126,
+    "action": 21156,
+    "reward": 1.3796073181615411,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 127,
+    "action": 24298,
+    "reward": 2.6815707273538614,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 128,
+    "action": 45189,
+    "reward": 11.371218206157952,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 129,
+    "action": 45186,
+    "reward": 2.251137884872831,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 130,
+    "action": 44741,
+    "reward": 1.211780455153953,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 131,
+    "action": 44738,
+    "reward": -4.400535475234268,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 132,
+    "action": 46444,
+    "reward": 3.3212851405622406,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 133,
+    "action": 122,
+    "reward": 2.8060240963855203,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 134,
+    "action": 39003,
+    "reward": 1.6253012048192768,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 135,
+    "action": 46447,
+    "reward": -4.866398929049525,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 136,
+    "action": 45996,
+    "reward": 1.014190093708178,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 137,
+    "action": 43741,
+    "reward": 2.2076305220883468,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 138,
+    "action": 39006,
+    "reward": -1.2994645247657397,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 139,
+    "action": 38555,
+    "reward": 13.15649263721549,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 140,
+    "action": 49846,
+    "reward": -0.04645247657296992,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 141,
+    "action": 39834,
+    "reward": 5.271753681392232,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 142,
+    "action": 38721,
+    "reward": 12.224096385542149,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 143,
+    "action": 42058,
+    "reward": 10.372423025435044,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 144,
+    "action": 49832,
+    "reward": 5.814190093708158,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 145,
+    "action": 15677,
+    "reward": 10.14176706827307,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 146,
+    "action": 46450,
+    "reward": 0.8453815261044235,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 147,
+    "action": 45999,
+    "reward": 0.2542168674698822,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 148,
+    "action": 43744,
+    "reward": 0.4511378848728328,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 149,
+    "action": 43293,
+    "reward": 7.503614457831302,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 150,
+    "action": 39009,
+    "reward": 14.87175368139221,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 151,
+    "action": 38107,
+    "reward": 2.932931726907632,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 152,
+    "action": 45171,
+    "reward": 5.3070950468540925,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 153,
+    "action": 49843,
+    "reward": 3.725970548862108,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 154,
+    "action": 49398,
+    "reward": 14.624765729584997,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 155,
+    "action": 39831,
+    "reward": 14.859973226238282,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 156,
+    "action": 39386,
+    "reward": 2.82463186077644,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 157,
+    "action": 12788,
+    "reward": 2.3734939759036133,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 158,
+    "action": 13420,
+    "reward": 9.427576974564941,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 159,
+    "action": 38718,
+    "reward": 1.980589022757697,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 160,
+    "action": 38273,
+    "reward": -1.4247657295850185,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 161,
+    "action": 42055,
+    "reward": -9.165863453815263,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 162,
+    "action": 41610,
+    "reward": 8.123560910307882,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 163,
+    "action": 49835,
+    "reward": 9.717135207496625,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 164,
+    "action": 49384,
+    "reward": 2.8282463186077647,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 165,
+    "action": 48062,
+    "reward": 12.748862115127178,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 166,
+    "action": 13870,
+    "reward": 4.625301204819264,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 167,
+    "action": 15674,
+    "reward": 7.121151271753675,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 168,
+    "action": 16125,
+    "reward": 7.298125836680077,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 169,
+    "action": 46453,
+    "reward": -0.05756358768406217,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 170,
+    "action": 46002,
+    "reward": -0.9670682730923668,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 171,
+    "action": 36305,
+    "reward": 3.2005354752342674,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 172,
+    "action": 43747,
+    "reward": 0.6346720214190193,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 173,
+    "action": 43296,
+    "reward": 0.996519410977252,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 174,
+    "action": 42845,
+    "reward": 8.525970548862086,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 175,
+    "action": 39012,
+    "reward": 3.2129852744310337,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 176,
+    "action": 37659,
+    "reward": -2.562918340026777,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 177,
+    "action": 44723,
+    "reward": 8.598929049531433,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 178,
+    "action": 35601,
+    "reward": 8.528246318607742,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 179,
+    "action": 33821,
+    "reward": -1.992369477911635,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 180,
+    "action": 49840,
+    "reward": 13.230120481927665,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 181,
+    "action": 49395,
+    "reward": 1.144712182061578,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 182,
+    "action": 48950,
+    "reward": 4.888353413654597,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 183,
+    "action": 39828,
+    "reward": 3.635341365461827,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 184,
+    "action": 39383,
+    "reward": -2.04765729585007,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 185,
+    "action": 38938,
+    "reward": 11.245917001338652,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 186,
+    "action": 12791,
+    "reward": 7.771218206157929,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 187,
+    "action": 13236,
+    "reward": 6.538821954484592,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 188,
+    "action": 4622,
+    "reward": -0.17697456492636338,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 189,
+    "action": 5073,
+    "reward": 2.857697456492652,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 190,
+    "action": 15016,
+    "reward": 0.9546184738955767,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 191,
+    "action": 7328,
+    "reward": 2.520080321285128,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 192,
+    "action": 38270,
+    "reward": 11.650602409638518,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 193,
+    "action": 37825,
+    "reward": 2.094109772423027,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 194,
+    "action": 42052,
+    "reward": 0.13708165997323365,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 195,
+    "action": 41607,
+    "reward": -6.87054886211513,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 196,
+    "action": 41162,
+    "reward": 0.08995983935742019,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 197,
+    "action": 49387,
+    "reward": 0.5129852744310356,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 198,
+    "action": 48936,
+    "reward": -1.056358768406969,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 199,
+    "action": 1890,
+    "reward": 5.301874163319929,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 200,
+    "action": 48059,
+    "reward": 1.6135207496653368,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 201,
+    "action": 47614,
+    "reward": 6.254216867469866,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 202,
+    "action": 13867,
+    "reward": 1.0688085676037546,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 203,
+    "action": 14318,
+    "reward": -8.251807228915661,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 204,
+    "action": 5974,
+    "reward": -8.973493975903608,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 205,
+    "action": 15671,
+    "reward": 12.888219544846022,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 206,
+    "action": 16122,
+    "reward": 1.5951807228915758,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 207,
+    "action": 16352,
+    "reward": 5.682329317269075,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 208,
+    "action": 16573,
+    "reward": 3.5587684069611902,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 209,
+    "action": 46005,
+    "reward": 0.31767068273092397,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 210,
+    "action": 43750,
+    "reward": 11.994779116465837,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 211,
+    "action": 43299,
+    "reward": 3.8977242302543393,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 212,
+    "action": 42848,
+    "reward": 11.214190093708138,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 213,
+    "action": 38491,
+    "reward": 9.701740294511357,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 214,
+    "action": 39015,
+    "reward": 8.425836680053553,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 215,
+    "action": 37211,
+    "reward": 6.964123159303863,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 216,
+    "action": 35598,
+    "reward": -0.006559571619816752,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 217,
+    "action": 44275,
+    "reward": -1.657028112449787,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 218,
+    "action": 35153,
+    "reward": -4.404149933065593,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 219,
+    "action": 33818,
+    "reward": -0.7524765729584879,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 220,
+    "action": 33373,
+    "reward": -5.910040160642562,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 221,
+    "action": 49392,
+    "reward": 13.311244979919657,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 222,
+    "action": 48947,
+    "reward": 0.454752342704132,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 223,
+    "action": 39825,
+    "reward": -10.37469879518073,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 224,
+    "action": 48502,
+    "reward": 7.0119143239624755,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 225,
+    "action": 39380,
+    "reward": -0.8734939759036239,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 226,
+    "action": 38935,
+    "reward": -8.828246318607775,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 227,
+    "action": 46277,
+    "reward": 0.5270414993306688,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 228,
+    "action": 12794,
+    "reward": 3.701740294511378,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 229,
+    "action": 13239,
+    "reward": -1.001740294511386,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 230,
+    "action": 4619,
+    "reward": 2.5400267737617175,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 231,
+    "action": 5070,
+    "reward": -4.997590361445775,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 232,
+    "action": 5521,
+    "reward": 0.6493975903614513,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 233,
+    "action": 15019,
+    "reward": 8.772958500669315,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 234,
+    "action": 15464,
+    "reward": 0.8669344042838198,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 235,
+    "action": 7325,
+    "reward": 0.02583668005355833,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 236,
+    "action": 37822,
+    "reward": 7.936412315930395,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 237,
+    "action": 37377,
+    "reward": 6.902275769745662,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 238,
+    "action": 42049,
+    "reward": 5.2259705488620884,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 239,
+    "action": 41604,
+    "reward": -1.045247657295847,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 240,
+    "action": 41159,
+    "reward": 8.514190093708132,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 241,
+    "action": 40714,
+    "reward": 2.187014725568937,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 242,
+    "action": 48939,
+    "reward": 8.4036144578313,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 243,
+    "action": 48488,
+    "reward": -0.5329317269076378,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 244,
+    "action": 1893,
+    "reward": 6.70896921017399,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 245,
+    "action": 48056,
+    "reward": 1.0724230254350688,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 246,
+    "action": 2338,
+    "reward": 7.483668005354713,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 247,
+    "action": 29285,
+    "reward": 4.066086568496202,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 248,
+    "action": 11077,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 249,
+    "action": 29719,
+    "reward": 0.24078536367693068,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 250,
+    "action": 13647,
+    "reward": 18.42748772869253,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 251,
+    "action": 29706,
+    "reward": 2.164123159303882,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 252,
+    "action": 18966,
+    "reward": 1.405890227576968,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 253,
+    "action": 29496,
+    "reward": 0.7562695225345817,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 254,
+    "action": 18741,
+    "reward": -0.24078536367693068,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 255,
+    "action": 29286,
+    "reward": 1.43293172690763,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 256,
+    "action": 29287,
+    "reward": 0.562159750111554,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 257,
+    "action": 19414,
+    "reward": 3.0447121820615743,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 258,
+    "action": 27473,
+    "reward": 2.2407853636769355,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 259,
+    "action": 27474,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 260,
+    "action": 23934,
+    "reward": 2.167068273092376,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 261,
+    "action": 30839,
+    "reward": 2.5670682730923655,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 262,
+    "action": 42602,
+    "reward": 60.52829094154395,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 263,
+    "action": 21380,
+    "reward": 3.0164658634538086,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 264,
+    "action": 21379,
+    "reward": 6.37349397590362,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 265,
+    "action": 11302,
+    "reward": 1.203926818384648,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 266,
+    "action": 29720,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 267,
+    "action": 18688,
+    "reward": 9.557786702365007,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 268,
+    "action": 31063,
+    "reward": 0.0,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 269,
+    "action": 21155,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 270,
+    "action": 15023,
+    "reward": 15.41767068273091,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 271,
+    "action": 24749,
+    "reward": 0.0,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 272,
+    "action": 23935,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 273,
+    "action": 31095,
+    "reward": 1.203926818384648,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 274,
+    "action": 31096,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 275,
+    "action": 31972,
+    "reward": 0.23882195448460666,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 276,
+    "action": 31973,
+    "reward": 1.2388219544846024,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 277,
+    "action": 31974,
+    "reward": -0.03980365908076591,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 278,
+    "action": 32641,
+    "reward": 0.7611780455153976,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 279,
+    "action": 32642,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 280,
+    "action": 31301,
+    "reward": 2.796073181615353,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 281,
+    "action": 31302,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 282,
+    "action": 31967,
+    "reward": 0.3980365908076716,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 283,
+    "action": 31968,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 284,
+    "action": 18462,
+    "reward": 0.6019634091923284,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 285,
+    "action": 18461,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 286,
+    "action": 21163,
+    "reward": 1.7513609995537684,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 287,
+    "action": 21162,
+    "reward": -0.15921463632306498,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 288,
+    "action": 21161,
+    "reward": 0.35823293172690573,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 289,
+    "action": 31070,
+    "reward": 0.35823293172691,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 290,
+    "action": 31071,
+    "reward": 1.215484158857651,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 291,
+    "action": 31072,
+    "reward": -0.03980365908077016,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 292,
+    "action": 31073,
+    "reward": 0.6815707273538615,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 293,
+    "action": 20711,
+    "reward": 0.7213743864346274,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 294,
+    "action": 20710,
+    "reward": -0.15921463632306498,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 295,
+    "action": 20709,
+    "reward": 0.35823293172690573,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 296,
+    "action": 32425,
+    "reward": 0.8417670682730951,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 297,
+    "action": 32426,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 298,
+    "action": 32427,
+    "reward": 0.35823293172690573,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 299,
+    "action": 17591,
+    "reward": 0.5786256135653727,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 300,
+    "action": 17592,
+    "reward": 0.44274877286925485,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 301,
+    "action": 17593,
+    "reward": -0.03980365908076591,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 302,
+    "action": 32428,
+    "reward": 0.47764390896921205,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 303,
+    "action": 32429,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 304,
+    "action": 21160,
+    "reward": 0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 305,
+    "action": 21159,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 306,
+    "action": 32597,
+    "reward": 2.2407853636769355,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 307,
+    "action": 32598,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 308,
+    "action": 32432,
+    "reward": 0.30000000000000004,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 309,
+    "action": 32433,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 310,
+    "action": 32434,
+    "reward": 1.562159750111554,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 311,
+    "action": 31754,
+    "reward": 0.3980365908076759,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 312,
+    "action": 31755,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 313,
+    "action": 32151,
+    "reward": 0.24078536367693493,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 314,
+    "action": 32152,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 315,
+    "action": 32153,
+    "reward": 0.0815707273538614,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 316,
+    "action": 32154,
+    "reward": -0.03980365908076591,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 317,
+    "action": 32155,
+    "reward": 0.9601963409192341,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 318,
+    "action": 38862,
+    "reward": 0.2407853636769264,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 319,
+    "action": 38861,
+    "reward": -0.15921463632306498,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 320,
+    "action": 32196,
+    "reward": 1.203926818384648,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 321,
+    "action": 32197,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 322,
+    "action": 31633,
+    "reward": 0.2407853636769264,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 323,
+    "action": 31632,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 324,
+    "action": 13110,
+    "reward": 0.6019634091923198,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 325,
+    "action": 13111,
+    "reward": -0.15921463632306498,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 326,
+    "action": 31526,
+    "reward": 0.4000000000000042,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 327,
+    "action": 31527,
+    "reward": -0.1592146363230735,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 328,
+    "action": 31528,
+    "reward": 0.5621597501115582,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 329,
+    "action": 32874,
+    "reward": 0.6019634091923198,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 330,
+    "action": 32875,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 331,
+    "action": 31535,
+    "reward": 0.3980365908076716,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 332,
+    "action": 31536,
+    "reward": -0.15921463632306926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 333,
+    "action": 42591,
+    "reward": 0.564658634538148,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 334,
+    "action": 42592,
+    "reward": -7.447657295850069,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 335,
+    "action": 42593,
+    "reward": 5.07416331994644,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 336,
+    "action": 42594,
+    "reward": 11.402945113788476,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 337,
+    "action": 42595,
+    "reward": 4.634136546184743,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 338,
+    "action": 42596,
+    "reward": 19.150602409638523,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 339,
+    "action": 42597,
+    "reward": 15.737081659973194,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 340,
+    "action": 42598,
+    "reward": 12.515930388219516,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 341,
+    "action": 42599,
+    "reward": 11.447121820615765,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 342,
+    "action": 42600,
+    "reward": 11.988888888888853,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 343,
+    "action": 42601,
+    "reward": 11.496519410977218,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 344,
+    "action": 45986,
+    "reward": 13.81472556894244,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 345,
+    "action": 45987,
+    "reward": 11.951271753681368,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 346,
+    "action": 45988,
+    "reward": 15.38473895582328,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 347,
+    "action": 45989,
+    "reward": 17.907095046854074,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 348,
+    "action": 45990,
+    "reward": 12.131860776439066,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 349,
+    "action": 45991,
+    "reward": 19.7800535475234,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 350,
+    "action": 350,
+    "reward": 10.171218206157974,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 351,
+    "action": 45992,
+    "reward": 12.428915662650578,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 352,
+    "action": 349,
+    "reward": 13.695983935742936,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 353,
+    "action": 45993,
+    "reward": 10.984203480589006,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 354,
+    "action": 45994,
+    "reward": 8.45595716198125,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 355,
+    "action": 121,
+    "reward": 18.775368139223534,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 356,
+    "action": 45995,
+    "reward": 11.65127175368137,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 357,
+    "action": 345,
+    "reward": 10.425435073627803,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 358,
+    "action": 569,
+    "reward": 11.736010709504646,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 359,
+    "action": 38782,
+    "reward": 16.49116465863451,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 360,
+    "action": 793,
+    "reward": 6.204819277108412,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 361,
+    "action": 38783,
+    "reward": 11.248862115127139,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 362,
+    "action": 38784,
+    "reward": 6.964123159303865,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 363,
+    "action": 1017,
+    "reward": -7.211111111111119,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 364,
+    "action": 38785,
+    "reward": 6.2240963855421585,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 365,
+    "action": 45394,
+    "reward": 13.375368139223532,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 366,
+    "action": 13419,
+    "reward": 12.3147255689424,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 367,
+    "action": 1241,
+    "reward": 9.198929049531431,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 368,
+    "action": 38786,
+    "reward": 9.431191432396224,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 369,
+    "action": 38941,
+    "reward": 13.062918340026757,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 370,
+    "action": 50062,
+    "reward": 17.76773761713517,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 371,
+    "action": 45170,
+    "reward": 8.872423025435065,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 372,
+    "action": 38787,
+    "reward": 7.8965194109772066,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 373,
+    "action": 13643,
+    "reward": 16.179384203480566,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 374,
+    "action": 36532,
+    "reward": 6.877108433734903,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 375,
+    "action": 50063,
+    "reward": 4.002409638554195,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 376,
+    "action": 39915,
+    "reward": 2.0800535475234065,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 377,
+    "action": 1465,
+    "reward": 1.3465863453815106,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 378,
+    "action": 49838,
+    "reward": 9.760642570281117,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 379,
+    "action": 38788,
+    "reward": 13.631191432396209,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 380,
+    "action": 44946,
+    "reward": 16.35180722891565,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 381,
+    "action": 39916,
+    "reward": 6.82771084337346,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 382,
+    "action": 36308,
+    "reward": 4.088755020080319,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 383,
+    "action": 49839,
+    "reward": 1.1571619812583571,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 384,
+    "action": 39691,
+    "reward": 16.368808567603732,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 385,
+    "action": 1689,
+    "reward": 15.487148594377466,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 386,
+    "action": 38789,
+    "reward": 17.271753681392212,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 387,
+    "action": 36083,
+    "reward": 16.29585006693438,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 388,
+    "action": 49614,
+    "reward": 9.260107095046818,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 389,
+    "action": 39917,
+    "reward": 9.26238286479248,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 390,
+    "action": 47837,
+    "reward": 0.5535475234270302,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 391,
+    "action": 47392,
+    "reward": 10.617135207496629,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 392,
+    "action": 14317,
+    "reward": 7.916465863453802,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 393,
+    "action": 44722,
+    "reward": 5.560642570281128,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 394,
+    "action": 14768,
+    "reward": 7.8405622489959725,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 395,
+    "action": 5973,
+    "reward": -2.15756358768406,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 396,
+    "action": 6424,
+    "reward": 7.141767068273106,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 397,
+    "action": 15670,
+    "reward": 10.467603748326622,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 398,
+    "action": 16121,
+    "reward": 6.501204819277081,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 399,
+    "action": 16355,
+    "reward": 6.94578313253014,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 400,
+    "action": 16572,
+    "reward": 0.8204819277108478,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 401,
+    "action": 7777,
+    "reward": 6.512985274431049,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 402,
+    "action": 42497,
+    "reward": 15.74002677376169,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 403,
+    "action": 16800,
+    "reward": 16.994645247657285,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 404,
+    "action": 17023,
+    "reward": 12.535207496653298,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 405,
+    "action": 39692,
+    "reward": 11.073493975903622,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 406,
+    "action": 38790,
+    "reward": 15.474698795180693,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 407,
+    "action": 37157,
+    "reward": 15.710575635876802,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 408,
+    "action": 36084,
+    "reward": 9.437081659973195,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 409,
+    "action": 43977,
+    "reward": 0.6493975903614471,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 410,
+    "action": 43526,
+    "reward": 4.6223560910307935,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 411,
+    "action": 43075,
+    "reward": -0.599330655957163,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 412,
+    "action": 49615,
+    "reward": 6.361847389558212,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 413,
+    "action": 39918,
+    "reward": 8.842971887550176,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 414,
+    "action": 39467,
+    "reward": 13.118206157965195,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 415,
+    "action": 47836,
+    "reward": 15.536546184738924,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 416,
+    "action": 38714,
+    "reward": 3.326506024096362,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 417,
+    "action": 47391,
+    "reward": 7.45649263721554,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 418,
+    "action": 38269,
+    "reward": 7.097590361445789,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 419,
+    "action": 4119,
+    "reward": 7.992369477911663,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 420,
+    "action": 14316,
+    "reward": 2.0034805890227614,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 421,
+    "action": 35859,
+    "reward": 15.934672021418992,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 422,
+    "action": 14767,
+    "reward": 15.171753681392197,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 423,
+    "action": 5972,
+    "reward": 8.205354752342696,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 424,
+    "action": 6423,
+    "reward": 16.46532797858098,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 425,
+    "action": 15669,
+    "reward": -2.099999999999994,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 426,
+    "action": 16120,
+    "reward": 7.062248995983964,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 427,
+    "action": 16356,
+    "reward": 5.865194109772443,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 428,
+    "action": 16571,
+    "reward": 12.687014725568922,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 429,
+    "action": 7776,
+    "reward": 14.172958500669333,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 430,
+    "action": 42496,
+    "reward": 12.26238286479248,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 431,
+    "action": 16801,
+    "reward": 11.42583668005353,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 432,
+    "action": 17022,
+    "reward": 14.658768406961162,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 433,
+    "action": 49390,
+    "reward": 7.471218206157964,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 434,
+    "action": 10031,
+    "reward": 6.992904953145924,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 435,
+    "action": 38791,
+    "reward": 12.96412315930384,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 436,
+    "action": 47613,
+    "reward": 13.90829986613117,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 437,
+    "action": 47168,
+    "reward": 5.714725568942439,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 438,
+    "action": 36987,
+    "reward": 13.779384203480564,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 439,
+    "action": 37156,
+    "reward": 14.679384203480565,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 440,
+    "action": 14090,
+    "reward": 6.179919678714871,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 441,
+    "action": 14541,
+    "reward": 13.23761713520747,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 442,
+    "action": 35821,
+    "reward": 13.779384203480564,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 443,
+    "action": 44498,
+    "reward": 7.797054886211537,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 444,
+    "action": 14992,
+    "reward": 13.831726907630506,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 445,
+    "action": 35376,
+    "reward": 12.995850066934379,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 446,
+    "action": 6197,
+    "reward": 6.052342704149955,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 447,
+    "action": 43978,
+    "reward": 14.848862115127158,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 448,
+    "action": 44053,
+    "reward": 7.3164658634538355,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 449,
+    "action": 34931,
+    "reward": 12.689959839357412,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 450,
+    "action": 6567,
+    "reward": 12.338286479250312,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 451,
+    "action": 6648,
+    "reward": 11.971218206157943,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 452,
+    "action": 43527,
+    "reward": 12.27416331994643,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 453,
+    "action": 15894,
+    "reward": 11.134672021418991,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 454,
+    "action": 43076,
+    "reward": 8.265863453815285,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 455,
+    "action": 16345,
+    "reward": 14.419946452476559,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 456,
+    "action": 34041,
+    "reward": 13.703480589022739,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 457,
+    "action": 16579,
+    "reward": 12.442302543507347,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 458,
+    "action": 16796,
+    "reward": 13.406425702811221,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 459,
+    "action": 33596,
+    "reward": 11.487014725568926,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 460,
+    "action": 8001,
+    "reward": 11.668273092369454,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 461,
+    "action": 17024,
+    "reward": 12.86171352074965,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 462,
+    "action": 17247,
+    "reward": 14.239357429718863,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 463,
+    "action": 33151,
+    "reward": 13.036412315930376,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 464,
+    "action": 49170,
+    "reward": 11.709504685408257,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 465,
+    "action": 39919,
+    "reward": 14.941767068273066,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 466,
+    "action": 40048,
+    "reward": 13.261178045515365,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 467,
+    "action": 48725,
+    "reward": 14.342436412315891,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 468,
+    "action": 39468,
+    "reward": 14.038821954484579,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 469,
+    "action": 39603,
+    "reward": 13.625301204819237,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 470,
+    "action": 39158,
+    "reward": 12.777643908969177,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 471,
+    "action": 47835,
+    "reward": 12.481258366800498,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 472,
+    "action": 38713,
+    "reward": 12.544712182061541,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 473,
+    "action": 47390,
+    "reward": 13.488888888888862,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 474,
+    "action": 38268,
+    "reward": 13.552342704149902,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 475,
+    "action": 46500,
+    "reward": 6.247657295850083,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 476,
+    "action": 12797,
+    "reward": 6.6052208835341455,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 477,
+    "action": 4120,
+    "reward": 11.514190093708141,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 478,
+    "action": 46008,
+    "reward": 14.141231593038802,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 479,
+    "action": 46055,
+    "reward": 11.872423025435047,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 480,
+    "action": 13242,
+    "reward": 15.159973226238266,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 481,
+    "action": 36933,
+    "reward": 11.991164658634506,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 482,
+    "action": 4618,
+    "reward": 7.864123159303904,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 483,
+    "action": 5069,
+    "reward": 12.105354752342684,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 484,
+    "action": 14315,
+    "reward": 13.418206157965168,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 485,
+    "action": 35860,
+    "reward": 13.115261044176687,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 486,
+    "action": 5520,
+    "reward": 13.296519410977226,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 487,
+    "action": 14766,
+    "reward": 6.712851405622511,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 488,
+    "action": 5971,
+    "reward": 12.16358768406959,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 489,
+    "action": 15022,
+    "reward": 11.740562248995959,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 490,
+    "action": 6422,
+    "reward": 13.887684069611764,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 491,
+    "action": 43753,
+    "reward": 6.468808567603772,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 492,
+    "action": 15467,
+    "reward": 14.484069611780445,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 493,
+    "action": 15668,
+    "reward": 12.69290495314589,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 494,
+    "action": 43302,
+    "reward": 13.948862115127156,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 495,
+    "action": 15912,
+    "reward": 13.048192771084318,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 496,
+    "action": 16119,
+    "reward": 13.939357429718864,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 497,
+    "action": 7324,
+    "reward": 13.3400267737617,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 498,
+    "action": 42851,
+    "reward": 7.965863453815283,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 499,
+    "action": 16357,
+    "reward": 12.328781793842014,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 500,
+    "action": 16570,
+    "reward": 13.578179384203473,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 501,
+    "action": 7775,
+    "reward": 14.23708165997321,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 502,
+    "action": 42495,
+    "reward": 7.007630522088366,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 503,
+    "action": 16802,
+    "reward": 12.675234270414988,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 504,
+    "action": 17021,
+    "reward": 12.858768406961168,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 505,
+    "action": 49391,
+    "reward": 7.471218206157964,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 506,
+    "action": 10030,
+    "reward": 13.09236947791161,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 507,
+    "action": 38792,
+    "reward": 12.725301204819234,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 508,
+    "action": 47612,
+    "reward": 14.991834002677347,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 509,
+    "action": 38490,
+    "reward": 13.246452476572934,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 510,
+    "action": 47167,
+    "reward": 12.47242302543504,
+    "legal_penalty": 0.0
+  },
+  {
+    "step": 511,
+    "action": 38045,
+    "reward": 12.59999999999996,
+    "legal_penalty": 0.0
+  }
+]

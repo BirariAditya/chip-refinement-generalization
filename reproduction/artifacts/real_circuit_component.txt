@@ -1,0 +1,46 @@
+Parsing authentic benchmark with unmodified ProblemInstance...
+read database from benchmark C:\Users\adity\.cache\chip-refinement-reproduction\macro-regulator\benchmark\superblue18
+node_net_num_max 33
+node_area_max = 820297.1232
+Parsed 512 selected modules, 322 selected nets; compressed/full grid: 194 224
+official_pretrained step 1 elapsed 0.26
+official_pretrained step 65 elapsed 10.96
+official_pretrained step 129 elapsed 19.65
+official_pretrained step 193 elapsed 27.27
+official_pretrained step 257 elapsed 35.17
+official_pretrained step 321 elapsed 43.36
+official_pretrained step 385 elapsed 51.11
+official_pretrained step 449 elapsed 58.87
+official_pretrained step 512 elapsed 66.49
+matched_mask_greedy step 1 elapsed 0.11
+matched_mask_greedy step 65 elapsed 6.16
+matched_mask_greedy step 129 elapsed 11.2
+matched_mask_greedy step 193 elapsed 15.1
+matched_mask_greedy step 257 elapsed 19.28
+matched_mask_greedy step 321 elapsed 23.76
+matched_mask_greedy step 385 elapsed 28.0
+matched_mask_greedy step 449 elapsed 32.16
+matched_mask_greedy step 512 elapsed 36.38
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+Traceback (most recent call last):
+  File "C:/Users/adity/OneDrive/\u6587\u4ef6/New project/chip-refinement-research/reproduction/real_circuit_component.py", line 255, in <module>
+    
+  File "C:/Users/adity/OneDrive/\u6587\u4ef6/New project/chip-refinement-research/reproduction/real_circuit_component.py", line 238, in main
+    'training_performed': False, 'global_hpwl': None, 'congestion': None, 'routed_ppa': None,
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "C:\Users\adity\AppData\Roaming\uv\python\cpython-3.8-windows-x86_64-none\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool_ is not JSON serializable

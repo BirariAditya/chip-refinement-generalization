@@ -10,6 +10,9 @@ Research checked 17 October 2026. Official proceedings identify venue/year; full
 - [EXPlace OpenReview](https://openreview.net/forum?id=yqvNwfxRR6), [code](https://github.com/lamda-bbo/EXPlace). Full accepted-paper access was limited; do not infer unverified split details.
 - [FlowPlace paper](https://arxiv.org/abs/2604.23658), [code](https://github.com/lamda-bbo/flowplace).
 - [PPO paper](https://arxiv.org/abs/1707.06347).
+- [Flexible Multiple-Objective RL for Chip Placement, DAC 2022](https://arxiv.org/abs/2204.06407), direct preference-conditioning prior art.
+- [RUDY, DATE 2007](https://ieeexplore.ieee.org/document/4211973), routing-demand estimation.
+- [Das and Dennis, weighted-sum limitations](https://doi.org/10.1007/BF01197559).
 - [DACDMP indexed primary location](https://past.date-conference.com/proceedings-archive/2026/DATA/163.pdf). Direct retrieval returned 404; review limited to indexed primary abstract and author publication listing.
 
 Additional foundational papers and precise links are recorded in their own literature files. Tool sources: [DREAMPlace](https://github.com/limbo018/DREAMPlace), [MacroPlacement](https://github.com/TILOS-AI-Institute/MacroPlacement), [ChiPBench](https://github.com/MIRALab-USTC/ChiPBench), [OpenROAD](https://openroad.readthedocs.io/en/latest/), [Circuit Training](https://github.com/google-research/circuit_training).
@@ -23,6 +26,10 @@ Additional foundational papers and precise links are recorded in their own liter
 | lamda-bbo/flowplace | `da4a10fc1a68c66dfa0ec31dd10f75b75e2e5547` | Contemporary release and compatibility context |
 
 Code observations concern those revisions. A future revision can fix an issue. A code-path risk is not proof that the authors used that path in their published evaluation.
+
+## Current local execution evidence
+
+The official MaskRegulate checkpoint and original Python components now execute locally on a selected real-circuit subgraph. [Reproduction records](reproduction/README.md) contain environment/checkpoint/benchmark hashes, a 512-action native-canvas policy pass and greedy control, and an independent per-net metric audit. These are component measurements with an adapted initializer, not DREAMPlace-based global placement or a paper-level PPA reproduction. In particular, the auxiliary `comp_res` selected-net HPWL helper can drop nets on this nonsquare case; this does not establish an error in the separate DREAMPlace global-HPWL evaluation.
 
 ## Data and result status
 

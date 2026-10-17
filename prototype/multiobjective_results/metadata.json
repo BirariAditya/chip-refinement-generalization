@@ -1,0 +1,105 @@
+{
+  "status": "measured_synthetic_objective_and_greedy_smoke_not_conditioned_PPO",
+  "objective_order": [
+    "weighted_center_pin_hpwl",
+    "rectangle_boundary_distance",
+    "top_decile_rudy_demand"
+  ],
+  "cases": [
+    {
+      "netlist_seed": 301,
+      "start_seed": 8001,
+      "initial_objectives": [
+        104.5,
+        26.0,
+        2.4885347985347988
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 301,
+      "start_seed": 8002,
+      "initial_objectives": [
+        149.5,
+        16.0,
+        2.777682178932179
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 302,
+      "start_seed": 8001,
+      "initial_objectives": [
+        120.0,
+        23.0,
+        2.2150793650793648
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 302,
+      "start_seed": 8002,
+      "initial_objectives": [
+        159.5,
+        14.0,
+        2.2246691320375525
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 303,
+      "start_seed": 8001,
+      "initial_objectives": [
+        105.0,
+        26.0,
+        3.6200349650349652
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 303,
+      "start_seed": 8002,
+      "initial_objectives": [
+        136.0,
+        20.0,
+        2.93993894993895
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 304,
+      "start_seed": 8001,
+      "initial_objectives": [
+        144.0,
+        22.0,
+        3.8085765696292007
+      ],
+      "sampled_unique_nondominated_count_including_initial": 6
+    },
+    {
+      "netlist_seed": 304,
+      "start_seed": 8002,
+      "initial_objectives": [
+        114.0,
+        17.0,
+        3.0901775271512113
+      ],
+      "sampled_unique_nondominated_count_including_initial": 5
+    }
+  ],
+  "checks": {
+    "demand_integral_matches_unweighted_hpwl": true,
+    "nonnegative_finite_demand": true,
+    "dominance_and_duplicate_check": true,
+    "degenerate_and_zero_length_net_check": true,
+    "reward_telescoping_checked_per_rollout": true
+  },
+  "seconds": 28.824695000002976,
+  "limitations": [
+    "no routing capacity, obstacles or layers in RUDY",
+    "no timing information",
+    "no PPO or learned preference conditioning",
+    "no claim of complete Pareto frontier",
+    "six separate greedy runs; not a matched-budget model comparison"
+  ]
+}

@@ -15,6 +15,18 @@ The eight training netlists use generator seeds101-108, validation201-202, and t
 
 `results/runs.csv` stores96 actual evaluation runs:16 circuit/initializer/start cases times six controller instances (identity, random, greedy, and three trained policies). `summary.csv` aggregates seeds/starts within each of four test netlists, then averages equally across netlists. `metadata.json` records hyperparameters, platform, selected weights and training time. `learning_curve.csv` contains validation checkpoint scores; `example_layouts.json` retains one predetermined case for report figures.
 
-These are equal-decision experiments (12 decisions), not equal-objective-call or equal-runtime comparisons. Candidate counts vary by trajectory. Timers measure the decision loop including internal assertions; they exclude environment construction and are diagnostic, not deployment benchmarks. The fixed synthetic topology distribution and small number of graphs cannot establish industrial family-level transfer. The mixed-start/scaling proposal has not yet been implemented.
+These are equal-decision experiments (12 decisions), not equal-objective-call or equal-runtime comparisons. Candidate counts vary by trajectory. Timers measure the decision loop including internal assertions; they exclude environment construction and are diagnostic, not deployment benchmarks. The fixed synthetic topology distribution and small number of graphs cannot establish industrial family-level transfer. The original mixed-start/scaling proposal is now a secondary alternative.
 
 Environment checks verify scalar/vector HPWL agreement for all feasible first-step candidates of a development case, boundary/overlap rejection, transition legality, and undiscounted reward telescoping. Raw artifacts are retained so every reported numeric result can be regenerated.
+
+## Selected congestion/Pareto direction
+
+```bash
+python prototype/multiobjective.py
+```
+
+`multiobjective.py` implements the initial objective/evaluation components of the selected approach. It computes bin-average RUDY-style demand, mean top-decile demand, rectangle boundary-distance regularity, fixed-start normalization, and exact minimization dominance with duplicate removal. A six-preference greedy sweep over four netlists and two starts saves 48 actual runs in `multiobjective_results/`. This is a control implementation; no learned preference-conditioned PPO policy is claimed.
+
+The smoke checks include finite/nonnegative demand, integrated demand equal to unweighted bbox wirelength, degenerate and zero-length nets, dominance/duplicate handling, and the reward telescoping identity. The map is a geometric demand surrogate with unit net demand, 10-by-10 bins, and a 0.5-unit minimum bbox span. It omits routing resources, layer/pitch data, and macro blockages. The regularity term is a rectangle-aware toy proxy; native reproduction preserves the reference implementation's definition.
+
+Each preference has its own greedy run. These measurements illustrate trade-offs and code operation, without a matched-budget claim or a claim to recover the true Pareto frontier. The separate original-code reproduction is documented in `../reproduction/`.

@@ -1,0 +1,24 @@
+{
+  "canvas_mode": "native",
+  "place_grid": 194,
+  "raw_reference_grid": {
+    "out_of_bounds_count": 55,
+    "overlap_pair_count": 173,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": false,
+    "upstream_macro_hpwl": 105058.59223214276,
+    "independent_macro_hpwl": 134554.86964285714,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 2155118.9187276857
+  },
+  "legal_start": {
+    "out_of_bounds_count": 0,
+    "overlap_pair_count": 0,
+    "rectangle_area_fraction": 0.5369592942926985,
+    "legal_rectangle_geometry": true,
+    "upstream_macro_hpwl": 154486.75205357175,
+    "independent_macro_hpwl": 174465.33062500038,
+    "hpwl_implementations_agree": false,
+    "upstream_regularity": 2397170.502940126
+  }
+}
