@@ -1,223 +1,563 @@
-\documentclass{article}
+  \documentclass{article}
 \usepackage{main}
-\usepackage[hyphens]{url}
-\usepackage{graphicx}
-\urlstyle{rm}
-\def\UrlFont{\rm}
-\usepackage{caption}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{booktabs}
-\usepackage{amsfonts}
-\usepackage{nicefrac}
-\usepackage{microtype}
-\usepackage{xcolor}
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+%\usepackage{cite}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+%\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}  % colors
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage[normalem]{ulem}
 \usepackage{cancel}
 \usepackage{natbib}
+\allowdisplaybreaks
 \usepackage[none]{hyphenat}
 \usepackage{array}
-\usepackage{tabularx}
+\usepackage{amssymb}
 \usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage[hidelinks]{hyperref}
-\allowdisplaybreaks
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\newcommand{\HPWL}{\operatorname{HPWL}}
-\newcommand{\E}{\mathbb{E}}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proof}[theorem]{Proof}
 
+\title{Beyond Wirelength and Regularity: Timing-, Congestion-Aware and Multi-Objective Reinforcement Learning for Macro Regulation}
 
-\title{Congestion-Aware Multi-Objective Macro Refinement\\Mid-Semester Research Proposal and Progress}
 \renewcommand{\undertitle}{Mid-Semester Project Report}
-\renewcommand{\shorttitle}{\small RL for Chip Placement: Mid-Semester Report}
-\author{Aditya Birari\\2023A3PS0700P\\EEE Department
-\And Pratyush Mohata\\2023A3PS0690P\\EEE Department}
+\renewcommand{\shorttitle}{Timing-, Congestion-Aware and Multi-Objective RL Macro Regulation}
+
+\author{{Pratyush Mohata} \\
+	2023A3PS0690P\\
+    Electrical \& Electronics Engg., BITS Pilani
+	\And
+    {Aditya Birari} \\
+	2023A3PS0700P\\
+    Electrical \& Electronics Engg., BITS Pilani
+}
 
 \begin{document}
+
 \maketitle
 
 \begin{abstract}
-This mid-semester report establishes our understanding of reinforcement learning (RL) for macro-placement refinement, reviews the relevant literature, and proposes a research direction. We select two complementary extensions: congestion-aware feedback and preference-conditioned multi-objective regulation. The proposed policy will refine an existing layout according to wirelength, regularity, and congestion preferences. Timing-aware feedback is a later possibility when suitable data and tools are available. Preliminary work includes source-code study, a small synthetic environment, initial congestion/Pareto utilities, and local execution of the released MaskRegulate policy. The proposed conditional regulator has not yet been trained or evaluated. The present deliverable is a problem formulation and an initial implementation foundation for the remaining project.
+Macro placement fixes the positions of large blocks (memories, IP cores) on a chip canvas and strongly
+determines the final power, performance and area (PPA). Two recent learning-based approaches attack the
+weaknesses of reinforcement-learning (RL) ``placers'' that build a layout from an empty canvas. The
+first is a diffusion model that generates all macro positions at once and is trained only on synthetic
+data \citep{lee2025diffusion}. The second is \emph{MaskRegulate}, which recasts RL as a
+\emph{regulator} that refines an existing placement using dense, exact rewards for wirelength and
+\emph{regularity} \citep{xue2024maskregulate}. We review both works and identify three gaps:
+(i) timing and congestion are measured only after placement and never shape the RL reward,
+(ii) the wirelength--regularity trade-off is fixed by a single hand-chosen coefficient, and
+(iii) the regulator's outcome is bounded by the placement it starts from. We propose two extensions.
+\textbf{Direction 1} gives the regulator new information about timing and routing congestion, through
+a \emph{TimingMask} and a \emph{CongestionMask}, and rewards it for improving both.
+\textbf{Direction 2} replaces the single trade-off with a multi-objective approach: one
+preference-conditioned regulator that returns a set of placements covering different trade-offs. We
+also propose starting the regulator from a diffusion-generated placement, which links the two papers.
+Finally, we describe how these ideas will be evaluated on the ICCAD 2015 benchmarks.
 \end{abstract}
 
-\section{Problem understanding and motivation}
+\keywords{Macro placement \and Reinforcement learning \and Diffusion models \and Timing-driven placement \and Multi-objective RL}
 
-\subsection{What is chip placement?}
-A circuit netlist specifies components and their electrical connections. Placement assigns these components physical coordinates on a chip canvas before routing connects their pins. Macros are large blocks, such as memories; standard cells are smaller logic instances. Macro locations strongly influence the space left for standard cells and interconnect. A placement with short estimated connections can still obstruct routing or create local demand hotspots. Our project refines the locations of existing blocks while keeping their functionality and dimensions fixed.
+%=====================================================================================================
+\section{Introduction}
 
-Represent the circuit as a hypergraph $G=(V,E)$, where vertices represent components and each hyperedge connects the pins of one net. A macro $i$ has lower-left coordinates $(x_i,y_i)$, dimensions $(w_i,h_i)$, and pin offsets. Its pins translate with the macro. On a canvas of width $W$ and height $H_d$, coordinates must satisfy
+Physical design turns a logical netlist into a manufacturable layout. Its first major step,
+\emph{placement}, assigns coordinates to every component. Modern chips contain hundreds to thousands of
+\emph{macros} and millions of small \emph{standard cells}, so placement is usually done in two stages:
+macros first, then cells around them. Because macros are large and highly connected, their positions
+largely decide how long the wires are, where routing congestion appears, and whether signals arrive
+within the clock period (timing).
+
+Google's RL work \citep{mirhoseini2021graph} made macro placement a popular RL benchmark: an agent places
+macros one at a time on a grid and receives a reward based on wirelength. Follow-up placers
+\citep{lai2022maskplace, lai2023chipformer, geng2024efficientplace} improved representations and sample
+efficiency, but three problems remain:
+\begin{itemize}
+  \item RL placers must be trained per circuit, which takes hours.
+  \item They generalise poorly, because little public data exists.
+  \item They make early, irreversible decisions with incomplete information: the first macro is placed
+  before the agent knows where its neighbours will go.
+\end{itemize}
+
+This project studies two papers that respond to these problems in opposite ways. \textbf{Paper A}
+\citep{lee2025diffusion} abandons RL and trains a denoising diffusion model that places \emph{all}
+objects simultaneously and zero-shot. \textbf{Paper B}, MaskRegulate \citep{xue2024maskregulate}, keeps
+RL but changes its job. The policy \emph{refines} an existing placement instead of building one from
+scratch, and a \emph{regularity} objective pushes macros towards the canvas periphery.
+
+\paragraph{Contributions of this report.}
+\begin{enumerate}
+  \item A review of both papers and a gap analysis based on the papers' own reported results
+  (Section~\ref{sec:lit}).
+  \item \textbf{Direction 1:} a timing- and congestion-aware regulator with two new input masks and
+  reward terms (Section~\ref{sec:d1}).
+  \item \textbf{Direction 2:} a multi-objective regulator that produces a set of trade-off placements
+  from a single trained policy (Section~\ref{sec:d2}).
+  \item A plan for evaluating both directions (Section~\ref{sec:protocol}).
+\end{enumerate}
+
+%=====================================================================================================
+\section{Background}
+\label{sec:bg}
+
+\paragraph{Netlist and placement.} A netlist is a hypergraph $\mathcal{H}=(V,E)$. Each net $e\in E$
+connects a set of pins $P_e$ on objects in $V=V_{\mathrm{mac}}\cup V_{\mathrm{cell}}\cup V_{\mathrm{io}}$.
+Macro $i$ has width $w_i$ and height $h_i$. A macro placement
+$s=\{(x_i,y_i)\}_{i=1}^{N}$ gives the lower-left corner of each of the $N$ macros. It is \emph{legal}
+if macros lie inside the canvas $[0,X_{\max}]\times[0,Y_{\max}]$ and their rectangles do not overlap.
+
+\paragraph{Half-perimeter wirelength (HPWL).}
 \begin{equation}
-0\leq x_i\leq W-w_i,\qquad 0\leq y_i\leq H_d-h_i.
+\mathrm{HPWL}(s)=\sum_{e\in E}\Big(\max_{p\in P_e}x_p-\min_{p\in P_e}x_p\Big)+\Big(\max_{p\in P_e}y_p-\min_{p\in P_e}y_p\Big).
+\label{eq:hpwl}
 \end{equation}
-Rectangles must not overlap, and fixed objects and blockages must be respected. Real physical flows also impose rules such as halos, orientations, and site alignment. Choices are coupled: moving one macro changes several nets and the space available to other objects. The feasible placement problem is therefore a large combinatorial search.
+It is cheap to compute and is the main wirelength proxy in both papers.
 
-\subsection{Objectives and the limitations of proxies}
-The common wirelength proxy is weighted half-perimeter wirelength (HPWL):
-\begin{equation}\label{eq:hpwl}
-H(P)=\sum_{e\in E}\omega_e\left[
-\max_{p\in e}p_x-\min_{p\in e}p_x+
-\max_{p\in e}p_y-\min_{p\in e}p_y\right].
+\paragraph{Regularity} \citep{xue2024maskregulate}. The regularity of macro $i$ is the sum of its
+distances to the nearest vertical and horizontal canvas edges:
+\begin{equation}
+\mathrm{Reg}(s)=\sum_{i=1}^{N}\Big[\min\{x_i,\,X_{\max}-x_i-w_i\}+\min\{y_i,\,Y_{\max}-y_i-h_i\}\Big].
+\label{eq:reg}
 \end{equation}
-Here $P$ denotes a placement, $\omega_e\geq0$ is the weight of net $e$, and $(p_x,p_y)$ are pin coordinates. For pins $(1,1),(4,2),(3,5)$, an unweighted net contributes $3+4=7$. HPWL measures bounding-box extent, not an actual routed path. With affine pin translations it is convex but nonsmooth in unrestricted coordinates; non-overlap and other placement constraints make the overall problem nonconvex.
+It is zero for a macro in a corner and largest at the centre, so lower is better.
 
-\emph{Congestion} arises when local routing demand competes for limited resources. A fast demand estimate, global-route overflow, and detailed-routing violations are different measurements. \emph{Regularity} is the reference method's preference for organized peripheral macro geometry; it is useful guidance rather than proof of low congestion. \emph{PPA} means power, performance, and area. Lower HPWL or a demand proxy alone does not demonstrate improved timing, power, or area. Those claims require a suitable physical evaluation flow \citep{openroad}.
+\paragraph{Timing.} A static timing analysis (STA) tool computes when each signal arrives and compares
+it with the time it is required, which is set by the clock period $T$. The difference is the
+\emph{slack}; a negative slack means the signal is late. Two standard summaries are used: the
+\emph{worst negative slack} (WNS), which is the single latest path, and the \emph{total negative
+slack} (TNS), which is the sum over all late paths. For both, values closer to zero are better.
 
-\subsection{Why use an RL regulator?}
-A constructive RL placer assigns coordinates before all future positions are known. A regulator begins with a complete placement and adjusts it, so a move can be assessed against known positions of connected objects. This provides more informative feedback and allows revision of an existing solution. Analytical tools such as DREAMPlace can provide starting placements \citep{dreamplacecode}.
+\paragraph{Reinforcement learning.} An agent observes a \emph{state}, takes an \emph{action} and
+receives a \emph{reward}. It learns a \emph{policy} that maximises the total reward over an episode.
+Both MaskRegulate and our extensions train the policy with PPO \citep{schulman2017ppo}, a standard
+and stable policy-gradient algorithm.
 
-Refinement remains challenging: a useful move may worsen one objective while improving another, a learned policy may depend on its initializer, and a cheap proxy can disagree with downstream routing. These issues motivate our selected direction: teach a regulator to respond to explicitly stated objective preferences and test whether its improvements remain meaningful.
+%=====================================================================================================
+\section{Literature Review}
+\label{sec:lit}
 
-\section{Literature review and research gap}
+\subsection{Classical and learning-based macro placement}
+\emph{Analytical} placers such as DREAMPlace \citep{lin2021dreamplace} relax placement into a smooth
+problem (wirelength plus a density penalty) and solve it with GPU gradient descent. They are fast, but
+they tend to cluster macros in the centre and can stall in local optima. AutoDMP
+\citep{agnesina2023autodmp} tunes DREAMPlace's settings with Bayesian optimisation, and DREAMPlace~4.0
+\citep{liao2023dreamplace4} makes it timing-driven by re-weighting critical nets. \emph{Black-box}
+methods such as WireMask-BBO \citep{shi2023wiremask} search placements guided by a wire mask.
+\emph{RL placers}, including GraphPlace \citep{mirhoseini2021graph}, MaskPlace \citep{lai2022maskplace},
+ChiPFormer \citep{lai2023chipformer} and EfficientPlace \citep{geng2024efficientplace}, place macros
+sequentially on a grid. Independent assessments have questioned how well RL placers' proxy gains carry
+over to real PPA \citep{cheng2023assessment}.
 
-\subsection{From constructing placements to refining them}
-\citet{lai2022maskplace} use visual masks, action constraints, and dense wirelength feedback for constructive macro placement. Thus, masks and frequent rewards are established ideas. \citet{lai2023chipformer} study transferable placement through offline decision transformers; this motivates separating frozen-policy transfer from target-circuit adaptation. Non-RL refinement is also relevant: IncreMacro demonstrates that incremental adjustment and peripheral guidance can improve a layout without an RL policy \citep{pu2024incremacro}.
+\subsection{Paper A: Chip Placement with Diffusion Models \citep{lee2025diffusion}}
+\textbf{Objective.} Train a model once, offline, that can then place the macros of \emph{any} new chip
+in a few minutes, without retraining it for that chip.
 
-\citet{xue2024maskregulate} change RL's role from macro placer to macro regulator. MaskRegulate refines an existing placement using Proximal Policy Optimization (PPO), an RL training algorithm, together with wirelength information and regularity feedback. Its original study already includes unseen-circuit evaluation, training on \texttt{superblue1/3/4/5} and testing on \texttt{superblue7/10/16/18}. Therefore, testing on an unseen circuit alone would not be a sufficient new contribution.
+\textbf{Main idea.} The paper uses a \emph{diffusion model}, the same kind of generative model used by
+modern image generators. Generation starts from macros scattered at random positions. The model then
+nudges all of them a little at a time, over many small steps, until a clean, compact layout emerges.
+Because every macro moves together, no early decision is locked in, unlike in sequential RL placers.
 
-The released implementation also has important details for reproduction. OLD/NEW occupancy maps allow moves into locations of macros that have not yet been adjusted; intermediate overlap can occur, so complete-pass outputs need independent checks. Quantities are already normalized. Our extension must preserve and document these conventions rather than compare against an invented unnormalized or always-legal baseline \citep{maskregulatecode}.
+\textbf{Training data.} Real chip designs are confidential, so there is very little data to learn
+from. The authors solve this by running the problem in reverse: they first scatter blocks on a canvas
+and only then add wires, mostly between blocks that are already close together. The layout they
+started from is therefore a good placement for the circuit they generated. This gives an unlimited
+supply of (circuit, good placement) examples at almost no cost.
 
-\subsection{Diffusion placement as a comparison point}
-\citet{lee2025diffusion} train a graph-conditioned diffusion model on synthetic circuit--layout pairs and generate placements through coordinate denoising. Guidance and legalization contribute to inference-time quality. This provides a different route to transferable placement, but it is a generator rather than an existing-layout refiner. Its published results and MaskRegulate's results use different settings and cannot be treated as a controlled direct comparison. Diffusion is useful context for the project; integrating another full framework is outside the present mid-semester scope.
+\textbf{Guidance.} While generating a layout, the model is gently steered towards shorter wires and
+away from overlapping macros, without any retraining.
 
-\subsection{Congestion and multi-objective prior art}
-Rectangular Uniform wire DensitY (RUDY) is an established fast routing-demand estimator \citep{spindler2007rudy}. It distributes estimated net demand across pin bounding rectangles. Dividing the canvas into grid cells, called bins, produces a spatial map of estimated demand. A lightweight implementation without routing layers, capacities, and obstruction handling is a RUDY-style \emph{demand proxy}, not a routed-congestion measurement.
+\textbf{Reported results.} On standard academic benchmarks (IBM and ISPD 2005), the paper reports:
+\begin{itemize}
+  \item placements in minutes per chip, instead of the hours needed by RL methods;
+  \item substantially shorter wirelength and less congestion than earlier RL and search-based placers;
+  \item results slightly better than DREAMPlace, a widely used analytical placer.
+\end{itemize}
 
-\citet{chang2022moppo} already propose preference-conditioned multi-objective RL chip placement using a multi-objective PPO method (MOPPO). Consequently, training one model with inference-time weights is not new by itself. Newer placement studies also incorporate expert guidance or alternative generative formulations \citep{gao2026expertise,xie2026flowplace}. Our contribution must be a well-motivated refinement extension with appropriate evaluation, rather than a first-ever claim about multi-objective placement.
+\textbf{Shortcomings.}
+\begin{itemize}
+  \item It only measures quick estimates (wirelength, congestion). Timing is never checked.
+  \item It cannot easily trade extra compute for better quality. The authors suggest RL fine-tuning
+  as future work.
+  \item Overlaps are discouraged but not strictly prevented.
+\end{itemize}
 
-\begin{table}[h]
-\caption{Main literature lessons informing the proposed project.}
-\label{tab:literature}
+\subsection{Paper B: MaskRegulate \citep{xue2024maskregulate}}
+\textbf{Objective.} Use RL to \emph{refine} a placement produced by DREAMPlace rather than create one,
+and optimise for real PPA rather than HPWL alone.
+
+\textbf{MDP.}
+\begin{itemize}
+  \item An episode visits each macro once, in a rule-based order.
+  \item The state is a set of $224\times224$ image masks for the current macro and the next one:
+  \begin{itemize}
+    \item The \emph{PositionMask} marks feasible cells; only already-adjusted macros count as obstacles.
+    \item The \emph{WireMask} gives the exact change in HPWL for each cell, normalised to $[-1,1]$.
+    \item The \emph{RegularMask} gives the change in regularity.
+  \end{itemize}
+  \item The action chooses one of $224^2$ cells for the current macro.
+  \item The reward is $r=\alpha\,r_{\mathrm{wire}}+(1-\alpha)\,r_{\mathrm{reg}}$, where both terms are
+  normalised to $[0,1]$ and $\alpha=0.7$.
+\end{itemize}
+The policy fuses masks pixel-wise with $1\times1$ convolutions and combines them with a ResNet-18
+encoder/decoder, before masking infeasible cells and applying a softmax. Training uses PPO. Because every
+other macro already has a position, the effect of each move is computed exactly. This removes the
+incomplete-information and sparse-reward problems of placers.
+
+\textbf{Reported results.} On the ICCAD 2015 \emph{superblue} circuits \citep{kim2015iccad}, evaluated
+with Cadence Innovus, MaskRegulate has the best average rank on all eight metrics. Compared with
+MaskPlace, it improves routed wirelength by 17.08\%, horizontal and vertical overflow by 73.08\% and
+38.81\%, WNS by 18.35\%, TNS by 37.89\%, and NVP by 46.17\%. It also generalises to unseen chips and
+can refine the outputs of other placers.
+
+\textbf{Shortcomings.}
+\begin{itemize}
+  \item \emph{Timing and congestion are never in the reward.} The authors list overlooking ``global
+  wirelength and timing metrics during the training process'' as a limitation. Their results agree:
+  \begin{itemize}
+    \item The average WNS and TNS ranks are both 1.875, against 1.0--1.125 for regularity, routed
+    wirelength and horizontal overflow.
+    \item AutoDMP has better WNS on superblue4, 16 and 18.
+    \item On superblue7, MaskRegulate's vertical overflow (0.64\%) is about double that of MaskPlace
+    (0.33\%) and WireMask-EA (0.35\%).
+  \end{itemize}
+  \item \emph{A single trade-off.} $\alpha$ is fixed by hand. The authors' sweep shows different
+  $\alpha$ give different trade-offs, and they name multi-objective optimisation for different chip
+  preferences as future work.
+  \item \emph{Dependence on the start.} The regulator edits locally, so a poor initial placement bounds
+  the outcome.
+  \item The grid is discrete, training takes about 1{,}000 PPO episodes per chip, and macro aspect
+  ratio is ignored.
+\end{itemize}
+
+\subsection{Comparison and research gaps}
+Table~\ref{tab:compare} summarises the two papers. They are complementary: Paper A is a fast,
+zero-shot \emph{drafter} with no notion of PPA beyond HPWL, while Paper B is an accurate
+\emph{editor} that needs a draft and optimises only two proxies. Concurrent work, FlowPlace
+\citep{xie2026flowplace}, folds a periphery prior into the synthetic data of a flow-matching
+generator. It uses neither RL fine-tuning nor multi-objective selection. We target three gaps:
+\begin{description}
+  \item[G1] Timing and congestion should enter the regulator's \emph{state and reward}, not only its
+  evaluation. This is Direction~1.
+  \item[G2] Designers need a \emph{set} of trade-off placements, not one $\alpha$. This is Direction~2.
+  \item[G3] The regulator's outcome is bounded by its start, which motivates a diffusion-generated
+  start (Section~\ref{sec:g3}).
+\end{description}
+
+\begin{table}[t]
+\centering
+\caption{Side-by-side comparison of the two reviewed papers.}
+\label{tab:compare}
 \small
-\begin{tabularx}{\linewidth}{@{}p{0.24\linewidth}YY@{}}
+\begin{tabular}{@{}L{3.0cm}L{5.6cm}L{5.6cm}@{}}
 \toprule
-Work & Relevant idea & Implication\\
+ & \textbf{Paper A: Diffusion} \citep{lee2025diffusion} & \textbf{Paper B: MaskRegulate} \citep{xue2024maskregulate} \\
 \midrule
-MaskPlace / ChiPFormer & Mask-based RL / transfer & Established foundations; define the transfer setting.\\
-MaskRegulate & Refine an existing layout & Principal baseline; generalization already studied.\\
-ChipDiffusion & Synthetic-trained generation & Contextual comparison; different pipeline and inputs.\\
-RUDY / MOPPO & Demand estimation / preferences & Both ingredients have prior art.\\
-IncreMacro & Classical refinement & Strong non-learning controls are necessary.\\
+View of RL & Replace it & Keep it, but as a refiner \\
+Starting point & Random positions & An existing (DREAMPlace) placement \\
+Decision style & All macros at once, 1{,}000 denoising steps & One macro per step, one pass \\
+Learning & Generative (denoising) on synthetic data & PPO on real benchmark circuits \\
+Representation & Graph (GNN + attention), continuous & Image masks ($224^2$ grid), CNN \\
+Objectives & HPWL + overlap via guidance & HPWL + regularity via reward \\
+Legality & Soft penalty & Hard (PositionMask) \\
+Evaluation & Proxy only (HPWL, RUDY) & Proxy + Innovus routing/timing \\
+Strength & Zero-shot, minutes per circuit & Best PPA ranks, accurate dense reward \\
+Main gap & No PPA-aware optimisation, no RL fine-tuning & No timing/congestion in reward; single $\alpha$ \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
-\subsection{Research gap and the two proposed extensions}
-This project proposes to extend MaskRegulate in two connected ways.
+%=====================================================================================================
+\section{Proposed Methodology}
+\label{sec:method}
 
-\paragraph{Congestion-aware reward.}
-Add a fast estimate of routing-demand hotspots to the regulator's existing wirelength and regularity objectives. The policy would receive positive feedback when a refinement reduces the combined cost, so training considers estimated congestion explicitly. Timing-aware feedback is a possible later extension, contingent on genuine timing data and a working analysis flow.
+We keep MaskRegulate's overall framework and extend it in two directions. Figure~\ref{fig:pipeline}
+shows the complete flow:
+\begin{enumerate}
+  \item An initial macro placement is produced, either by DREAMPlace (as in MaskRegulate) or by the
+  diffusion model of Paper A.
+  \item An RL \emph{regulator} refines this placement one macro at a time.
+  \item Standard cells are placed around the fixed macros with DREAMPlace.
+  \item The final layout is routed and its timing is checked.
+\end{enumerate}
+Our changes are all inside step~2: what the regulator \emph{sees} (its input masks) and what it is
+\emph{rewarded} for.
 
-\paragraph{Preference-conditioned multi-objective refinement.}
-Give the regulator an input vector specifying the desired balance between wirelength, regularity, and congestion. Instead of using only one fixed balance, the same trained policy would be queried with different preferences to generate alternative layouts. Feasible alternatives would then be filtered into an empirical nondominated set: no other sampled feasible layout is no worse on all objectives and better on at least one.
-
-\textbf{Research question.} Can one congestion-aware, preference-conditioned regulator produce useful wirelength--regularity--congestion trade-offs on unseen circuits, and do improvements in its demand proxy agree with routing-based measurements? The proposed contribution is the evaluated combination of these extensions in placement refinement. The preliminary work reported here does not yet answer this question.
-
-\section{Proposed research direction and problem formulation}
-
-\subsection{Input, output, and objectives}
-The proposed method takes a circuit, geometry/constraints, an initial placement $P_0$, a compute budget, and a preference vector. It returns a checked feasible refinement. The core minimized objective vector will be
-\begin{equation}
-\mathbf f(P)=\big(H(P),R(P),C(P)\big),\qquad
-\boldsymbol\lambda=(\lambda_H,\lambda_R,\lambda_C)\geq0,\quad \sum_j\lambda_j=1.
-\end{equation}
-$H$ is pin HPWL; $R$ retains MaskRegulate's regularity definition; $C$ summarizes high-demand bins of a declared RUDY-style map. We propose the mean of the top ten percent of bins, rather than whole-grid mean demand, because whole-grid demand largely follows total estimated wirelength. Bin resolution, degenerate-net handling, net demand, and normalization will be fixed and verified.
-
-The main implementation will begin with congestion-aware feedback. Timing is an optional later extension: criticality-weighted HPWL or periodic timing analysis requires genuine criticalities, libraries, constraints, and an analysis flow. It will not be presented as measured timing improvement merely because a geometric proxy decreases.
-
-\subsection{Preference-conditioned policy and reward}
-The reference environment supplies placement, wirelength, and regularity masks for macro adjustment. The actor selects a macro's destination, while the critic estimates the expected future return used during training. We propose adding congestion information and the preference vector to both networks. Changing only the reward would not let identical observations select different actions for different preferences. PPO is the planned learning algorithm, following MaskRegulate \citep{schulman2017ppo}.
-
-For fixed episode scales $s_j=\max(f_j(P_0),\varepsilon_j)>0$, define
-\begin{equation}\label{eq:reward}
-J_{\boldsymbol\lambda}(P)=\sum_j\lambda_j\frac{f_j(P)}{s_j},
-\qquad r_t=J_{\boldsymbol\lambda}(P_t)-J_{\boldsymbol\lambda}(P_{t+1}).
-\end{equation}
-Here $J_{\boldsymbol\lambda}$ is the preference-weighted cost, $r_t$ is the reward for moving from $P_t$ to $P_{t+1}$, and each $\varepsilon_j$ is a positive minimum scale preventing division by zero. These minimum scales will be fixed using training/validation, and all methods will share the same references on a given start. An episode is one finite sequence of refinement moves; its preferences remain fixed. With undiscounted fixed-horizon return, the reward sum equals initial-minus-final scalar cost. MaskRegulate's discounting or other shaping changes this relationship and will be documented.
-
-For example, $(0.7,0.2,0.1)$ emphasizes wirelength, whereas $(0.2,0.1,0.7)$ emphasizes the congestion proxy. The intended benefit is to query the same trained regulator for different trade-offs. Feasibility is a constraint: a preference cannot justify an illegal returned placement. Native passwise masks will be preserved and final endpoints checked independently.
-
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
-\begin{tikzpicture}[font=\small,>=stealth]
-\node[draw,align=center,text width=2.5cm,minimum height=1cm] (a) at (0,0) {Existing\\placement};
-\node[draw,align=center,text width=3cm,minimum height=1cm] (b) at (4,0) {Preference-conditioned\\RL regulator};
-\node[draw,align=center,text width=2.6cm,minimum height=1cm] (c) at (8.2,0) {Checked refined\\candidate};
-\node[align=center] (w) at (4,1.2) {Preferences $\boldsymbol\lambda$};
-\draw[->] (a) -- (b); \draw[->] (b) -- (c); \draw[->] (w) -- (b);
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, font=\small, minimum height=0.95cm, inner sep=4pt, fill=white},
+  new/.style={box, fill=orange!12, draw=orange!70!black},
+  arr/.style={-{Latex[length=2mm]}, thick}]
+\node[box] (net) {Netlist};
+\node[box, right=0.45cm of net] (init) {Initial placement\\DREAMPlace / Diffusion};
+\node[box, right=0.45cm of init, minimum width=4.6cm, minimum height=2.4cm] (reg) {};
+\node[font=\small\bfseries, anchor=north] at (reg.north) {RL regulator};
+\node[box, font=\scriptsize, minimum height=0.5cm, anchor=north west] (m1) at ($(reg.north west)+(0.12,-0.45)$) {Position};
+\node[box, font=\scriptsize, minimum height=0.5cm, right=0.08cm of m1] (m2) {Wire};
+\node[box, font=\scriptsize, minimum height=0.5cm, right=0.08cm of m2] (m3) {Regular};
+\node[new, font=\scriptsize, minimum height=0.5cm, below=0.12cm of m1, xshift=0.35cm] (m4) {Timing (D1)};
+\node[new, font=\scriptsize, minimum height=0.5cm, right=0.08cm of m4] (m5) {Congestion (D1)};
+\node[new, font=\scriptsize, minimum height=0.45cm, below=0.12cm of m4, xshift=0.6cm] (m6) {Preference (D2)};
+\node[box, right=0.45cm of reg] (cell) {Std.-cell\\placement};
+\node[box, right=0.45cm of cell] (eval) {Routing\\+ timing};
+\draw[arr] (net) -- (init);
+\draw[arr] (init) -- (reg);
+\draw[arr] (reg) -- (cell);
+\draw[arr] (cell) -- (eval);
 \end{tikzpicture}
-\caption{Proposed core pipeline. Repeating inference for a declared preference set will provide candidate trade-offs. Training and systematic evaluation of this conditional regulator are future work.}
+\caption{Proposed flow. White boxes are taken from MaskRegulate. Orange boxes are new in this project:
+timing and congestion information (Direction~1, D1) and a designer preference input (Direction~2,
+D2).}
+\label{fig:pipeline}
 \end{figure}
 
-\subsection{What ``Pareto'' will mean here}
-A feasible placement dominates another if it is no worse on every objective and strictly better on at least one. We will remove dominated and duplicate outputs to obtain an \emph{empirical nondominated set}. A finite weighted-sum sweep does not guarantee recovery of the entire Pareto frontier, particularly unsupported nonconvex regions \citep{das1997weightedsum}.
+\subsection{How the regulator works}
+\label{sec:mdp}
+The chip canvas is divided into a grid of cells. Macros are visited one at a time, largest first. In each
+episode, every macro is visited exactly once:
+\begin{itemize}
+  \item \textbf{What the agent sees (state).} A set of grid-shaped ``masks'' for the current macro. Each
+  mask answers one question for every grid cell, for example: ``Is this spot free?'' (PositionMask) or
+  ``How would wirelength change if the macro moved here?'' (WireMask).
+  \item \textbf{What the agent does (action).} It picks a free grid cell and moves the current macro
+  there.
+  \item \textbf{What the agent gets (reward).} The improvement that the move produced in each objective,
+  combined with weights:
+  \begin{equation}
+  r=w_{\mathrm{wire}}\,r_{\mathrm{wire}}+w_{\mathrm{reg}}\,r_{\mathrm{reg}}+w_{\mathrm{tim}}\,r_{\mathrm{tim}}+w_{\mathrm{cong}}\,r_{\mathrm{cong}}.
+  \label{eq:reward}
+  \end{equation}
+  MaskRegulate uses only the first two terms ($w_{\mathrm{wire}}=0.7$, $w_{\mathrm{reg}}=0.3$). The
+  timing and congestion terms are our additions.
+\end{itemize}
 
-The planned hypotheses are: congestion feedback improves the available trade-offs; preference conditioning is useful relative to fixed-weight models and search; and proxy rankings remain sufficiently consistent with routing-based evaluation. Each hypothesis needs experiments after the mid-semester stage.
+Each reward term is scaled by the objective's starting value so that terms with different units are
+comparable. The per-move rewards also add up exactly to the total improvement over the whole episode.
+This means the agent receives frequent, accurate feedback, and it is still being trained to optimise
+the \emph{final} layout. It also means that a new objective can be added to the regulator as long as we
+can compute how each possible move would change it. That is exactly what the two new masks below
+provide.
 
-\section{Preliminary work completed}
+The policy network (a CNN) and the training algorithm (PPO) are kept as in MaskRegulate. Only the input
+masks and the reward change.
 
-\subsection{Understanding and initial implementation}
-We have reviewed the anchor papers and relevant prior art, inspected the released MaskRegulate code, and formulated the selected extension. A small NumPy environment implements rectangles, pin HPWL, feasibility checks, and dense improvement rewards. An educational linear REINFORCE policy checks the learning/evaluation scaffold \citep{williams1992reinforce}; it is distinct from the original PPO model.
+\subsection{Direction 1: timing- and congestion-aware regulation}
+\label{sec:d1}
 
-For the new direction, initial utilities compute a RUDY-style map, top-decile demand, normalized objective costs, and nondominated filtering. A six-preference greedy smoke sweep produced 48 toy runs across four synthetic netlists and two starts. Checks cover finite demand, demand integration, degenerate nets, feasibility, dominance, and reward telescoping. These are functionality checks and a control implementation; a learned preference-conditioned regulator is not implemented yet.
+\paragraph{Motivation.} MaskRegulate pushes macros towards the chip edges (regularity). This clears the
+centre for routing, but it can stretch the wires on timing-critical paths that pass through those
+macros. Its own results show timing as its weakest metric. We therefore give the regulator direct
+information about timing and congestion.
 
-\subsection{Initial execution of the MaskRegulate reference}
-On this PC, we installed an isolated CPU environment and strictly loaded the released checkpoint into the original actor/critic. Diagnostic inference verified valid action probabilities and masking. An adapted component harness also completed one 512-move policy pass and one greedy pass on the selected-module representation of \texttt{superblue18}, with independently checked rectangle feasibility.
+\subsubsection{TimingMask}
+\begin{itemize}
+  \item \textbf{Delay model.} Wire delay grows faster than wire length. For a simple driver-and-wire
+  model (the Elmore delay, \citealp{elmore1948transient}), it has a constant part, a part proportional
+  to the length $\ell$, and a part proportional to $\ell^2$:
+  \begin{equation}
+  d(\ell)\approx d_0+a\,\ell+b\,\ell^2 .
+  \end{equation}
+  A long wire is therefore disproportionately slow. Moving a macro to the edge can create exactly such
+  long wires.
+  \item \textbf{Which paths matter.} A static timing analysis (STA) tool (OpenSTA or OpenTimer) lists
+  the most critical paths and their delays. The STA is re-run every few training episodes, not after
+  every move, to keep it affordable.
+  \item \textbf{Timing cost.} We add up how much each critical path exceeds the clock period $T$. A small
+  safety margin also counts paths that are \emph{nearly} late:
+  \begin{equation}
+  \text{Timing cost}=\sum_{\text{critical paths}}\max\big(0,\ \text{path delay}-0.95\,T\big).
+  \end{equation}
+  \item \textbf{The mask.} Moving a macro only changes the two wires connecting it to its neighbours on
+  each path. So for every grid cell we can compute exactly how the timing cost would change. This
+  produces the TimingMask, which works the same way as MaskRegulate's WireMask.
+  \item \textbf{Cheaper alternative.} Instead of tracking whole paths, give more weight to nets that lie
+  on critical paths inside the existing WireMask. This is similar to how DREAMPlace~4.0 makes
+  placement timing-driven \citep{liao2023dreamplace4}. We will compare both versions.
+\end{itemize}
 
-This is preliminary baseline execution. DREAMPlace initialization/evaluation was bypassed explicitly, a legal reference-derived start was supplied, and no training occurred. The full original entry point remains unavailable without the compiled backend. The component trial also exposed a discrepancy in the auxiliary macro-HPWL reporter; a per-net audit identified omitted nets on this nonsquare case. This motivates independent metric checks and is not a conclusion about the paper's separate global-HPWL results.
+\subsubsection{CongestionMask}
+\begin{itemize}
+  \item \textbf{Routing demand.} RUDY \citep{spindler2007rudy} estimates how many wires pass through each
+  region of the chip by spreading each net's wire evenly over its bounding box. Total demand over the
+  whole chip equals the total wirelength. Wirelength alone therefore controls how \emph{much} demand
+  there is, but not \emph{where} it concentrates.
+  \item \textbf{Routing capacity.} Each region can carry a fixed number of wires. A macro blocks part of
+  the routing resources above it, so a region covered by a macro has less capacity.
+  \item \textbf{Overflow.} Congestion is measured as the demand that exceeds capacity:
+  \begin{equation}
+  \text{Overflow}=\sum_{\text{regions}}\max\big(0,\ \text{demand}-\text{capacity}\big).
+  \end{equation}
+  \item \textbf{The mask.} For every grid cell, the CongestionMask gives the extra overflow that would
+  be created if the macro were placed there, i.e.\ if it blocked a busy routing region. This can be
+  computed for the whole grid in one fast pass.
+\end{itemize}
+Regularity is an indirect rule (``keep macros near the edge''). The CongestionMask measures directly
+what that rule tries to protect (``do not block busy routing regions''), and only where it actually
+matters.
 
-\begin{table}[h]
-\caption{Mid-semester status: completed foundations versus proposed work.}
+\subsubsection{Putting it together}
+The regulator now receives five masks: Position, Wire and Regular from MaskRegulate, plus Timing and
+Congestion. Its reward is Eq.~\eqref{eq:reward} with all four terms switched on. Setting the timing and
+congestion weights to zero recovers MaskRegulate exactly, which gives us a clean baseline.
+
+\subsection{Direction 2: multi-objective regulation}
+\label{sec:d2}
+
+\paragraph{Motivation.} Different chips need different trade-offs. A mobile chip may prioritise
+wirelength and power, while a high-performance chip prioritises timing. MaskRegulate fixes one
+trade-off ($\alpha=0.7$) by hand and returns a single placement. Its authors list multi-objective
+optimisation as future work.
+
+\paragraph{Goal: a menu of good placements.} Instead of one answer, we want to give the designer a
+\emph{set} of placements, each representing a different trade-off. A placement is \emph{Pareto-optimal}
+if no other placement is better in one objective without being worse in another. The set of such
+placements is the \emph{Pareto front}, and that is what we want the regulator to produce.
+
+\paragraph{Approach.}
+\begin{enumerate}
+  \item \textbf{Baseline: one regulator per trade-off.} Train separate regulators for several fixed
+  weight settings $(w_{\mathrm{wire}},w_{\mathrm{reg}},w_{\mathrm{tim}},w_{\mathrm{cong}})$. This
+  generalises MaskRegulate's own $\alpha$ sweep, but the training cost grows with the number of
+  settings.
+  \item \textbf{Proposed: one preference-conditioned regulator.} Train a \emph{single} policy that
+  takes the preference weights as an extra input. During training, a new random preference is drawn
+  for every batch of episodes, and the reward uses those weights. At test time, the designer chooses
+  the weights, or we sweep over many of them, and the same trained model returns the matching
+  placement. This follows the idea of preference-driven multi-objective RL \citep{basaklar2023pdmorl}.
+  The preference is injected into the network with a simple conditioning layer (FiLM,
+  \citealp{perez2018film}).
+  \item \textbf{Reaching every trade-off.} A weighted sum of objectives can miss some balanced
+  trade-offs. As a refinement, we will also try the \emph{Chebyshev} rule, which scores a layout by
+  its worst-weighted objective. Because the final objective values are known at the end of each
+  episode, this can be given as a final-step reward.
+\end{enumerate}
+
+\paragraph{How we will judge a set of placements.} We use the standard \emph{hypervolume} measure
+\citep{zitzler1999hv}. It is the size of the region of objective space that the set improves upon,
+relative to a fixed reference point. A set scores higher if its placements are both better and more
+varied. We will evaluate on 35 evenly spread preference settings, including the four
+``single-objective'' extremes \citep{das1998nbi}.
+
+\subsection{Linking the two papers: a better starting point}
+\label{sec:g3}
+The regulator only edits a placement, so a better draft should lead to a better final layout. We will
+therefore replace DREAMPlace's starting placement with one sampled from the pre-trained diffusion
+model of Paper A. This needs no extra training. As a stretch goal, the diffusion model itself could be
+fine-tuned with RL (DDPO, \citealp{black2024ddpo}), with the regulator's final improvement as the
+reward. This is the future work both papers point towards.
+
+\begin{table}[H]
+\centering
+\caption{Summary of the proposed components.}
+\label{tab:components}
 \small
-\begin{tabularx}{\linewidth}{@{}p{0.26\linewidth}YY@{}}
+\begin{tabular}{@{}L{3.2cm}L{6.2cm}L{5.2cm}@{}}
 \toprule
-Component & Current status & Next step\\
+\textbf{Component} & \textbf{What it does} & \textbf{Gap addressed} \\
 \midrule
-Literature/formulation & Congestion-aware, preference-conditioned refinement proposed & Refine implementation details with feedback.\\
-Toy objective/environment & Initial code and smoke checks & Connect checked congestion feedback to native RL.\\
-Original policy & Checkpoint and component execution & Establish a full backend-compatible baseline.\\
-Conditional PPO regulator & Proposed & Add preference inputs and train a small pilot.\\
-Generalization/routing & Not evaluated & Run controlled held-out and downstream studies.\\
+TimingMask & Shows, for every grid cell, how the delay of critical paths would change & G1: timing not in the reward \\
+CongestionMask & Shows, for every grid cell, the extra routing overflow caused by blocking & G1: congestion not in the reward \\
+Four-term reward & Rewards improvements in wirelength, regularity, timing and congestion & G1 \\
+Preference input & Lets one trained policy produce placements for any trade-off & G2: single fixed $\alpha$ \\
+Hypervolume evaluation & Scores the quality and variety of the returned set & G2 \\
+Diffusion start & Gives the regulator a better draft to edit & G3: dependence on the start \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
-Detailed logs, raw toy results, adapter limitations, and rerun commands are retained in the repository rather than treated as final project results. No completed conditional-model training, real-circuit generalization study, routing/timing validation, or PPA improvement is claimed.
+%=====================================================================================================
+\section{Planned Experimental Protocol}
+\label{sec:protocol}
 
-\section{Planned evaluation and work after mid-semester}
-The next steps are to establish the native baseline, validate the congestion evaluator, train a fixed-weight congestion-aware regulator, and then add preference conditioning. This order separates reward changes from conditioning changes. GPU access is available on another machine; the local PC currently runs CPU component checks.
+\paragraph{Benchmarks.} Our main benchmark is the ICCAD 2015 superblue suite \citep{kim2015iccad}:
+eight industrial-scale designs with 0.8--1.9M cells, hundreds of macros and timing constraints. We
+will also use ISPD 2005 for comparison with Paper A. Small synthetic netlists, generated with Paper A's
+method, will be used for quick debugging.
 
-Training, validation, and test designs will be separated by circuit family. Checkpoints and hyperparameters will use validation only. Planned controls include the original regulator, a fixed-weight congestion-aware model, fixed-weight specialists, no refinement, and greedy/simulated-annealing refinement. We will compare candidate sets under the same \emph{total} deployment budget, including proxy and backend costs, rather than giving a preference sweep uncounted extra runs.
+\paragraph{Baselines.} DREAMPlace \citep{lin2021dreamplace}, AutoDMP \citep{agnesina2023autodmp},
+MaskPlace \citep{lai2022maskplace}, MaskRegulate \citep{xue2024maskregulate} (official code) and the
+pre-trained diffusion placer \citep{lee2025diffusion}.
 
-Planned measurements include HPWL, regularity, the demand proxy, endpoint feasibility, runtime, and empirical-set quality. Hypervolume, a measure of the objective-space region dominated by the sampled layouts relative to a reference point, will use common scales and a reference fixed without final-test outcomes. Component-wise comparisons (ablations) will isolate congestion reward, congestion observation, and preference conditioning. Where compatible data/tools permit, a small preselected subset will be checked for global-route congestion and timing at a common stage \citep{openroadgpl,openroadgrt}. Such evaluation is planned, not completed.
+\paragraph{Evaluation flow and metrics.}
+\begin{itemize}
+  \item Each method places the macros. Standard cells are then placed by DREAMPlace with the macros
+  fixed.
+  \item Routing and timing analysis use Cadence Innovus if a licence is available, and the open-source
+  OpenROAD flow \citep{ajayi2019openroad} otherwise.
+  \item \emph{Quick (proxy) metrics}: wirelength (HPWL), regularity, estimated congestion.
+  \item \emph{Final (PPA) metrics}: routed wirelength, routing overflow, WNS, TNS and the number of
+  violating paths.
+  \item \emph{Set metrics} (Direction~2): hypervolume and the number of Pareto-optimal placements.
+\end{itemize}
 
-\begin{table}[h]
-\caption{Indicative plan for the remaining two months.}
+\paragraph{Planned experiments.} Each experiment in Table~\ref{tab:exps} tests one hypothesis.
+
+\begin{table}[H]
+\centering
+\caption{Planned experiments. ``sb'' denotes superblue.}
+\label{tab:exps}
 \small
-\begin{tabularx}{\linewidth}{@{}p{0.17\linewidth}Y@{}}
+\begin{tabular}{@{}L{0.6cm}L{5.6cm}L{4.4cm}L{3.6cm}@{}}
 \toprule
-Period & Planned milestone\\
+\textbf{ID} & \textbf{Question} & \textbf{Setup} & \textbf{Measured by} \\
 \midrule
-Weeks 1--2 & Backend-compatible baseline and independently verified congestion metric.\\
-Weeks 3--4 & Fixed-weight congestion model and a small preference-conditioned PPO pilot.\\
-Weeks 5--6 & Held-out circuits, search/specialist controls, and focused ablations.\\
-Weeks 7--8 & Downstream audit where feasible, failure analysis, and final report.\\
+E1 & Can we reproduce MaskRegulate's published numbers? & Official code on sb1/3/4/5 & HPWL and regularity within 5\% \\
+E2 & Does the TimingMask improve timing, and at what wirelength cost? & MaskRegulate vs.\ + timing term; full vs.\ cheaper variant & WNS, TNS, violating paths, routed WL \\
+E3 & Does the CongestionMask reduce routing overflow beyond regularity? & MaskRegulate vs.\ + congestion term & Routing overflow, routed WL \\
+E4 & Do timing and congestion pull in different directions? & Several weight settings & Per-metric comparison \\
+E5 & Can one preference-conditioned policy replace many separately trained ones? & 35 preference settings & Hypervolume, training time \\
+E6 & Does a diffusion starting point improve the final layout? & Start from DREAMPlace / diffusion / random & All final metrics \\
+E7 & Does the regulator work on chips it has not seen? & Train on sb1/3/4/5, test on sb7/10/16/18 & Final metrics on test chips \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
-The mid-semester contribution is therefore a clear understanding of the problem, a literature-grounded research direction, a proposed formulation, and initial implementation evidence. Whether the proposed model provides better trade-offs remains the question for the rest of the project.
+\paragraph{Expected challenges.}
+\begin{itemize}
+  \item \emph{Compute}: MaskRegulate was trained on four GPUs. We will start from released checkpoints
+  and the smaller superblue designs.
+  \item \emph{Tool access}: without an Innovus licence we will use the OpenROAD flow and compare
+  methods relative to each other.
+  \item \emph{Timing analysis cost}: if path-level timing is too slow inside training, we will use the
+  cheaper critical-net weighting.
+  \item \emph{Balancing objectives}: the reward weights decide which objective dominates. Direction~2
+  addresses this by learning across many weightings.
+\end{itemize}
 
-\paragraph{Project repository.}
-\url{https://github.com/BirariAditya/chip-refinement-generalization}.
-The private repository contains literature notes, source, preliminary records, and the proposed experimental protocol.
+%=====================================================================================================
+\section{Conclusion}
+The diffusion placer \citep{lee2025diffusion} is a fast, zero-shot drafter, and MaskRegulate
+\citep{xue2024maskregulate} is an accurate RL editor. Neither lets timing or congestion guide its
+optimisation, and MaskRegulate commits to a single hand-chosen trade-off. We propose two extensions:
+\begin{itemize}
+  \item \textbf{Direction 1:} give the regulator two new inputs and reward terms, a \emph{TimingMask}
+  for critical-path delay and a \emph{CongestionMask} for routing overflow caused by macro blockage.
+  \item \textbf{Direction 2:} train one preference-conditioned regulator that returns a set of
+  placements covering different trade-offs, judged by hypervolume.
+\end{itemize}
+We will also test whether starting the regulator from a diffusion-generated placement improves the
+final layout. The remaining part of the semester will be spent implementing these components and
+running the planned experiments on the ICCAD 2015 benchmarks.
 
-\begingroup
-\small
-\setlength{\bibsep}{3pt}
 \bibliography{references}
 \bibliographystyle{apalike}
-\endgroup
+
 \end{document}
